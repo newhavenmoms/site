@@ -51,7 +51,7 @@ img{max-width:100%}
 .nav{display:flex;gap:4px;overflow-x:auto}
 .nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem;padding:8px 12px;border-radius:999px;white-space:nowrap}
 .nav a:hover{background:var(--paper-2)}
-@media (max-width:640px){.brand span{display:none}.nav a{padding:8px 9px;font-size:.9rem}}
+@media (max-width:640px){.brand{font-size:1.1rem}.nav a{padding:8px 9px;font-size:.9rem}}
 
 /* hero */
 .hero{padding:0 0 36px}
@@ -119,7 +119,7 @@ details[open] .chev{transform:rotate(180deg)}
 section.block{padding:64px 0;border-top:1px solid var(--line)}
 #things{background:var(--lilac-tint);border-top:0}
 #things .places li{border-color:color-mix(in srgb,var(--lilac) 22%,transparent)}
-#share{background:var(--marigold-tint);border-top:0}
+#contact{background:var(--paper-2);border-top:0}
 .block h2.sec{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;margin:0 0 10px}
 .block .intro{color:var(--ink-soft);max-width:60ch;margin:0 0 28px}
 
@@ -189,6 +189,45 @@ section.block{padding:64px 0;border-top:1px solid var(--line)}
 .bd p{margin:4px 0 0;color:var(--ink-soft);font-size:.93rem}
 .linkbtn{appearance:none;background:none;border:0;padding:0;font:inherit;font-size:.93rem;font-weight:600;color:var(--harbor);text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-top:6px}
 
+/* header actions */
+.actions{display:flex;align-items:center;gap:6px;flex:none}
+.iglink{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;color:var(--ink)}
+.iglink:hover{background:var(--paper-2)}
+.btn-sm{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:700;font-size:.92rem;padding:9px 16px;border-radius:999px;white-space:nowrap}
+.btn-sm:hover{background:var(--harbor)}
+.top .wrap{gap:12px}
+.navwrap{display:flex;align-items:center;gap:8px;min-width:0}
+@media (max-width:900px){.nav{display:none}}
+@media (max-width:340px){.brand span{display:none}}
+.hero-cta{margin-top:22px;font-size:.98rem;color:rgba(255,255,255,.9)}
+.hero-cta a{color:#FFFFFF;font-weight:700}
+/* get involved */
+.involve{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+@media (max-width:860px){.involve{grid-template-columns:1fr}}
+.card{background:var(--card);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:10px}
+.card h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.15;margin:0}
+.card p{margin:0;color:var(--ink-soft)}
+.card .btn{align-self:flex-start;margin-top:8px}
+.card.event{border:2px solid var(--elm)}
+.card.sponsor{border:2px solid var(--lilac)}
+.card.hello{border:2px solid var(--harbor)}
+.card ul{margin:0;padding-left:1.1em;color:var(--ink-soft)}
+.btn.green{background:var(--lilac)}
+.btn.green:hover{background:color-mix(in srgb,var(--lilac) 85%,black)}
+.btn.teal{background:var(--harbor)}
+.btn.teal:hover{background:color-mix(in srgb,var(--harbor) 85%,black)}
+.iglink-lg{display:inline-flex;align-items:center;gap:8px;font-weight:700;margin-top:4px}
+footer a{color:inherit}
+/* privacy */
+.privacy{display:none;padding:64px 0;border-top:1px solid var(--line)}
+.privacy:target{display:block}
+.privacy .doc > *{max-width:68ch}
+.privacy h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.1;margin:0 0 6px}
+.privacy h3{font-family:var(--sans);font-size:1.08rem;font-weight:700;margin:28px 0 6px}
+.privacy p,.privacy li{color:var(--ink-soft)}
+.privacy p{margin:0 0 10px}
+.privacy ul{margin:0 0 10px;padding-left:1.2em}
+.privacy .updated{font-size:.92rem;margin-bottom:22px}
 /* share */
 .share{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:start}
 @media (max-width:760px){.share{grid-template-columns:1fr}}
@@ -209,12 +248,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <svg width="38" height="38" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#FFD166"></circle><g transform="rotate(24 32 32) translate(2 3)"><path d="M32 6 C46 14 52 26 49 40 C46 51 39 57 32 58 C25 57 18 51 15 40 C12 26 18 14 32 6 Z" fill="#17363A" transform="translate(32 32) scale(0.82) translate(-32 -32)"></path></g><g transform="rotate(24 32 32)"><path d="M32 6 C46 14 52 26 49 40 C46 51 39 57 32 58 C25 57 18 51 15 40 C12 26 18 14 32 6 Z" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round" transform="translate(32 32) scale(0.78) translate(-32 -32)"></path><path d="M32 6 C46 14 52 26 49 40 C46 51 39 57 32 58 C25 57 18 51 15 40 C12 26 18 14 32 6 Z" fill="#2E8B57" transform="translate(32 32) scale(0.78) translate(-32 -32)"></path><path d="M32 18 V52 M32 28 L26 23 M32 36 L39 31 M32 44 L27 40" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"></path></g></svg>
       <span>New Haven Moms</span>
     </a>
-    <nav class="nav" aria-label="Sections">
-      <a href="#bigdays">Big days</a>
-      <a href="#events">Calendar</a>
-      <a href="#things">Things to do</a>
-      <a href="#resources">Resources</a>
-    </nav>
+    <div class="navwrap">
+      <nav class="nav" aria-label="Sections">
+        <a href="#bigdays">Big days</a>
+        <a href="#events">Calendar</a>
+        <a href="#things">Things to do</a>
+        <a href="#resources">Resources</a>
+      </nav>
+      <div class="actions">
+        <a class="iglink" href="https://www.instagram.com/newhavenmoms/" target="_blank" rel="noopener" aria-label="New Haven Moms on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+        <a class="btn-sm" href="#contact">Contact</a>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -224,6 +269,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <h1>What are we doing today?</h1>
       <p class="lede">Storytimes, festivals, museum days, farm mornings and classes for little ones around New Haven, checked and gathered in one place. Tap a day to see what's on.</p>
       <div class="days" id="days" role="group" aria-label="Pick a day this week"></div>
+      <p class="hero-cta">Know about something we're missing? <a href="#contact">Tell us about an event</a></p>
     </div></div>
     <div class="wrap">
       <div class="dayhead"><h2 id="dayTitle">Today</h2></div>
@@ -265,7 +311,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <h3 id="weekTitle" aria-live="polite"></h3>
       </div>
       <div id="weekList"></div>
-      <p class="fineprint">Holiday closures aren't reflected here. Events marked "Check first" are recurring slots we haven't been able to confirm for every date, so look at the organizer's page before you head out. Open any event for its source link.</p>
+      <p class="fineprint">Holiday closures aren't reflected here. Events marked "Check first" are recurring slots we haven't been able to confirm for every date, so look at the organizer's page before you head out. Open any event for its source link. Something missing? <a href="#contact">Tell us about it</a>.</p>
     </div>
   </section>
 
@@ -382,16 +428,73 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
   </section>
 
-  <section class="block" id="share">
-    <div class="wrap share">
-      <div>
-        <h2 class="sec">Know about something we missed?</h2>
-        <p class="intro">This calendar is built by a New Haven mom, one flyer and library newsletter at a time. If you run a class, story hour or meetup for families, send it over and we'll add it.</p>
+  <section class="block" id="contact">
+    <div class="wrap">
+      <h2 class="sec">Get in touch</h2>
+      <p class="intro">This calendar is built by a New Haven mom, one flyer and library newsletter at a time. Here's how to add to it, support it, or just say hi.</p>
+      <div class="involve">
+        <div class="card event">
+          <h3>Tell us about an event</h3>
+          <p>Running a class, story hour, festival or meetup for families? Saw a flyer at the library? Send it over and we'll add it to the calendar.</p>
+          <p>Helpful to include:</p>
+          <ul><li>Name and place</li><li>Day and time</li><li>Ages and price</li><li>A link, if there is one</li></ul>
+          <a class="btn" href="mailto:newhavenmoms@gmail.com?subject=Event%20for%20the%20calendar">Send us an event</a>
+        </div>
+        <div class="card sponsor">
+          <h3>Sponsor New Haven Moms</h3>
+          <p>Local businesses and organizations that serve families can sponsor the calendar, a section of the site, or our Instagram. It's a way to reach New Haven parents and help keep this resource free.</p>
+          <p>Reach out and we'll send over the options.</p>
+          <a class="btn green" href="mailto:newhavenmoms@gmail.com?subject=Sponsoring%20New%20Haven%20Moms">Ask about sponsoring</a>
+        </div>
+        <div class="card hello">
+          <h3>Say hi</h3>
+          <p>Questions, ideas, corrections, or a favorite spot we should know about. We read everything.</p>
+          <a class="btn teal" href="mailto:newhavenmoms@gmail.com?subject=Hi%20New%20Haven%20Moms">Email us</a>
+          <p style="margin-top:6px">newhavenmoms@gmail.com</p>
+          <a class="iglink-lg" href="https://www.instagram.com/newhavenmoms/" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg> Follow @newhavenmoms</a>
+        </div>
       </div>
-      <div>
-        <a class="btn" href="mailto:newhavenmoms@gmail.com?subject=Event%20for%20the%20calendar">Send us an event</a>
-        <p class="fineprint">Or email <a href="mailto:newhavenmoms@gmail.com">newhavenmoms@gmail.com</a>. Include the name, place, day and time, ages, price, and a link if there is one.</p>
-      </div>
+    </div>
+  </section>
+  <section class="privacy" id="privacy" aria-labelledby="privacy-title">
+    <div class="wrap doc">
+      <h2 id="privacy-title">Privacy policy</h2>
+      <p class="updated">Effective September 23, 2026</p>
+      <p>New Haven Moms (newhavenctmoms.com) is a free guide to events, places and resources for families in New Haven, Connecticut. We keep things simple: this site has no accounts, no sign-up forms, no advertising trackers and no analytics. This policy explains the little information that does change hands when you use the site or get in touch.</p>
+
+      <h3>Information we collect</h3>
+      <p>We don't collect personal information through the website itself. You can browse the calendar, things to do and resources without telling us who you are, and the site doesn't set cookies.</p>
+      <p>If you email us, we receive your email address, your name if you include it, and whatever you write. That includes event tips, sponsorship inquiries and general messages.</p>
+
+      <h3>How we use it</h3>
+      <ul>
+        <li>To reply to you.</li>
+        <li>To add events you tell us about to the calendar. We publish event details like the name, place, time, ages, price and the organizer's public link. We don't publish your personal email address or contact details unless you ask us to list them as the event's contact.</li>
+        <li>To talk with businesses and organizations about sponsorship.</li>
+      </ul>
+      <p>We don't sell, rent or trade your information, and we don't add you to a mailing list without asking.</p>
+
+      <h3>Services we rely on</h3>
+      <p>A few outside services help run the site, and they may receive basic technical information such as your IP address when your browser connects to them:</p>
+      <ul>
+        <li><strong>GitHub Pages</strong> hosts the site. GitHub may keep server logs, including visitor IP addresses, for security. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub privacy statement</a>.</li>
+        <li><strong>Google Fonts</strong> supplies the site's typefaces, so your browser requests them from Google. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>.</li>
+        <li><strong>Gmail</strong> handles email sent to newhavenmoms@gmail.com.</li>
+      </ul>
+      <p>The site also links to other websites, such as Instagram, Google Maps, event organizers and community resources. Those sites have their own privacy practices, which we don't control.</p>
+
+      <h3>Children's privacy</h3>
+      <p>This site is written for parents and caregivers. It isn't directed at children under 13, and we don't knowingly collect information from them. If you think a child has sent us personal information, email us and we'll delete it.</p>
+
+      <h3>Keeping and deleting your information</h3>
+      <p>We keep emails only as long as they're useful for replying, updating the calendar or an ongoing sponsorship conversation. To ask what we have from you, or to have it deleted, email <a href="mailto:newhavenmoms@gmail.com?subject=Privacy%20request">newhavenmoms@gmail.com</a>.</p>
+
+      <h3>Changes to this policy</h3>
+      <p>If we add something new, like a newsletter sign-up or visitor analytics, we'll update this policy first and change the date at the top.</p>
+
+      <h3>Contact</h3>
+      <p>Questions about privacy? Email <a href="mailto:newhavenmoms@gmail.com?subject=Privacy%20question">newhavenmoms@gmail.com</a>.</p>
+      <p><a href="#today">Back to the calendar</a></p>
     </div>
   </section>
 </main>
@@ -399,7 +502,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span>New Haven Moms · made in the Elm City</span>
-    <span>Schedules last checked September 2026</span>
+    <span><a href="https://www.instagram.com/newhavenmoms/" target="_blank" rel="noopener">Instagram @newhavenmoms</a> · <a href="mailto:newhavenmoms@gmail.com">newhavenmoms@gmail.com</a></span>
+    <span>Schedules last checked September 2026 · <a href="#privacy">Privacy policy</a></span>
   </div>
 </footer>
 
