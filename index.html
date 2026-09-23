@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>New Haven Moms — events, places, and help for New Haven families</title>
+<meta name="description" content="What's happening for kids and families in New Haven, CT this week: free storytimes, museum days, classes, parks, and local resources for moms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFFFF; --paper-2:#F6F1EB; --ink:#17363A; --ink-soft:#4F6668;
+  --elm:#C9472F; --elm-deep:#17363A; --harbor:#1C6E87; --marigold:#FFD166; --marigold-ink:#4A3500;
+  --rose:#C9472F; --lilac:#287A4C; --lilac-tint:#E3F3E8; --marigold-tint:#FFF4D6; --line:#E8E1D9; --card:#FFFFFF;
+  --band:#25784A;
+  --serif:"Young Serif", Georgia, "Times New Roman", serif;
+  --sans:"Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#10201F; --paper-2:#172B2A; --ink:#EAF2EF; --ink-soft:#A9BDB9;
+    --elm:#FF8A70; --elm-deep:#CDE7E0; --harbor:#7CC4DC; --marigold:#FFD166; --marigold-ink:#2A1E00;
+    --rose:#FF8A70; --lilac:#7DD3A0; --lilac-tint:#16352A; --marigold-tint:#2D2712; --line:#264140; --card:#132625;
+    --band:#1D5A3A;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#10201F; --paper-2:#172B2A; --ink:#EAF2EF; --ink-soft:#A9BDB9;
+    --elm:#FF8A70; --elm-deep:#CDE7E0; --harbor:#7CC4DC; --marigold:#FFD166; --marigold-ink:#2A1E00;
+    --rose:#FF8A70; --lilac:#7DD3A0; --lilac-tint:#16352A; --marigold-tint:#2D2712; --line:#264140; --card:#132625;
+    --band:#1D5A3A;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--harbor);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:2px;border-radius:6px}
+img{max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--serif);font-size:1.25rem;white-space:nowrap}
+.brand svg{flex:none}
+.nav{display:flex;gap:4px;overflow-x:auto}
+.nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.nav a:hover{background:var(--paper-2)}
+@media (max-width:640px){.brand span{display:none}.nav a{padding:8px 9px;font-size:.9rem}}
+
+/* hero */
+.hero{padding:0 0 36px}
+.band{background:var(--band);color:#FFFFFF;padding:52px 0 40px;margin-bottom:32px}
+.band .lede{color:rgba(255,255,255,.88)}
+.band .day{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.32);color:#FFFFFF}
+.band .day:hover{border-color:#FFFFFF}
+.band .day .dow,.band .day .cnt{color:rgba(255,255,255,.82)}
+.band .day.wkend{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.45)}
+.band .day.wkend .dow{color:#FFFFFF}
+.band .day[aria-pressed="true"]{background:#FFD166;border-color:#FFD166;color:#17363A}
+.band .day[aria-pressed="true"] .dow,.band .day[aria-pressed="true"] .cnt{color:#17363A}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,6.5vw,4.6rem);line-height:1.02;letter-spacing:-.01em;margin:0 0 14px;max-width:14ch}
+.hero .lede{max-width:56ch;margin:0 0 28px;font-size:1.1rem}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.day{appearance:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:18px;padding:12px 6px 10px;cursor:pointer;text-align:center;font:inherit;transition:background .15s,border-color .15s}
+.day:hover{border-color:var(--elm)}
+.day.wkend{background:var(--lilac-tint);border-color:transparent}
+.day.wkend .dow{color:var(--lilac)}
+.day .dow{display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft)}
+.day .num{display:block;font-family:var(--serif);font-size:1.7rem;line-height:1.15}
+.day .cnt{display:block;font-size:.78rem;color:var(--ink-soft)}
+.day[aria-pressed="true"]{background:var(--elm);border-color:var(--elm);color:#fff}
+.day[aria-pressed="true"] .dow,.day[aria-pressed="true"] .cnt{color:rgba(255,255,255,.85)}
+@media (max-width:560px){.days{gap:5px}.day{padding:10px 2px 8px;border-radius:14px}.day .num{font-size:1.35rem}.day .cnt{font-size:.7rem}}
+.dayhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 4px}
+.dayhead h2{font-family:var(--serif);font-weight:400;font-size:1.6rem;margin:0}
+
+/* event rows */
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ev{border-bottom:1px solid var(--line)}
+.ev details>summary{list-style:none;display:grid;grid-template-columns:7.5rem 1fr auto;gap:4px 18px;padding:16px 4px;cursor:pointer;align-items:start}
+.ev details>summary::-webkit-details-marker{display:none}
+.ev summary:hover .ev-title{color:var(--elm)}
+.ev-time{font-variant-numeric:tabular-nums;font-weight:600;padding-top:2px}
+.ev-time small{display:block;font-weight:400;color:var(--ink-soft);font-size:.85rem}
+.ev-title{font-family:var(--serif);font-size:1.2rem;line-height:1.25;display:block}
+.ev-place{color:var(--ink-soft);font-size:.95rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{font-size:.78rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--paper-2);color:var(--ink)}
+.tag.drop{background:var(--lilac-tint);color:var(--lilac)}
+.tag.free{background:var(--marigold);color:var(--marigold-ink)}
+.tag.signup{background:transparent;border:1.5px solid var(--harbor);color:var(--harbor)}
+.tag.special{background:var(--lilac);color:#fff}
+:root[data-theme="dark"] .tag.special{color:#0E1F1C}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tag.special{color:#0E1F1C}}
+.tag.check{background:transparent;border:1.5px dashed var(--rose);color:var(--rose)}
+.chev{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line);transition:transform .2s;margin-top:2px}
+details[open] .chev{transform:rotate(180deg)}
+@media (prefers-reduced-motion:reduce){.chev{transition:none}}
+.ev-more{padding:0 4px 18px calc(7.5rem + 22px);color:var(--ink-soft);font-size:.97rem}
+.ev-more dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:0 0 10px}
+.ev-more dt{font-weight:600;color:var(--ink)}
+.ev-more dd{margin:0}
+.ev-more p{margin:0 0 8px}
+@media (max-width:640px){
+  .ev details>summary{grid-template-columns:1fr auto}
+  .ev-time{grid-column:1/-1;display:flex;gap:8px;align-items:baseline}
+  .ev-time small{display:inline}
+  .ev-more{padding-left:4px}
+}
+.empty{padding:28px 4px;color:var(--ink-soft)}
+
+/* sections */
+section.block{padding:64px 0;border-top:1px solid var(--line)}
+#things{background:var(--lilac-tint);border-top:0}
+#things .places li{border-color:color-mix(in srgb,var(--lilac) 22%,transparent)}
+#share{background:var(--marigold-tint);border-top:0}
+.block h2.sec{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;margin:0 0 10px}
+.block .intro{color:var(--ink-soft);max-width:60ch;margin:0 0 28px}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:14px 0;margin-bottom:8px;border-bottom:1px solid var(--line)}
+.fgroup{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fgroup .flabel{font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-right:2px}
+.chip{appearance:none;font:inherit;font-size:.9rem;font-weight:600;border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:6px 13px;border-radius:999px;cursor:pointer}
+.chip:hover{border-color:var(--elm)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.weeknav{display:flex;align-items:center;gap:10px;margin:18px 0 6px}
+.weeknav h3{font-family:var(--serif);font-weight:400;font-size:1.35rem;margin:0;min-width:12ch}
+.navbtn{appearance:none;font:inherit;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font-size:1.1rem}
+.navbtn:hover:not(:disabled){border-color:var(--elm)}
+.navbtn:disabled{opacity:.35;cursor:default}
+.weekday h4::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--elm);margin-right:8px;vertical-align:1px}
+.weekday h4{font-family:var(--sans);font-size:.95rem;font-weight:700;margin:26px 0 0;padding-bottom:6px;color:var(--elm-deep)}
+.fineprint{font-size:.9rem;color:var(--ink-soft);margin-top:22px;max-width:70ch}
+
+/* things to do */
+.places{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
+@media (max-width:860px){.places{grid-template-columns:1fr;gap:28px}}
+.places h3{font-family:var(--serif);font-weight:400;font-size:1.4rem;margin:0 0 4px;padding-bottom:8px;border-bottom:3px solid var(--lilac)}
+.places h3.rain{border-color:var(--harbor)}
+.places h3.drive{border-color:var(--marigold)}
+.places ul{list-style:none;margin:0;padding:0}
+.places li{padding:14px 0;border-bottom:1px solid var(--line)}
+.places li strong{display:block;font-size:1.05rem}
+.places li span{color:var(--ink-soft);font-size:.97rem}
+
+/* resources */
+.help{background:var(--harbor);color:#fff;border-radius:28px;padding:32px;margin-bottom:36px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+:root[data-theme="dark"] .help{background:var(--paper-2);color:var(--ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .help{background:var(--paper-2);color:var(--ink)}}
+.help h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin:0 0 6px;grid-column:1/-1}
+.help .line{display:block}
+.help .num{font-family:var(--serif);font-size:1.6rem;display:block;color:inherit;text-decoration:none;margin:2px 0 4px}
+.help .num:hover{text-decoration:underline}
+.help p{margin:0;opacity:.88;font-size:.97rem}
+@media (max-width:700px){.help{grid-template-columns:1fr;padding:24px;border-radius:22px}}
+.res{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+@media (max-width:760px){.res{grid-template-columns:1fr}}
+.res article{padding:18px 0;border-top:1px solid var(--line)}
+.res h4{margin:0 0 4px;font-size:1.08rem}
+.res p{margin:0 0 6px;color:var(--ink-soft);font-size:.98rem}
+.res .for{font-size:.8rem;font-weight:700;color:var(--elm)}
+.res article:nth-child(3n+2) .for{color:var(--lilac)}
+.res article:nth-child(3n) .for{color:var(--harbor)}
+
+/* big days */
+.bigdays{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
+@media (max-width:860px){.bigdays{grid-template-columns:1fr;gap:28px}}
+.bigdays h3{font-family:var(--serif);font-weight:400;font-size:1.4rem;margin:0 0 4px;padding-bottom:8px;border-bottom:3px solid var(--elm)}
+.bigdays h3.hw{border-color:var(--marigold)}
+.bigdays h3.hol{border-color:var(--lilac)}
+.bigdays ol{list-style:none;margin:0;padding:0}
+.bd{display:grid;grid-template-columns:4.2rem 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
+.bd-date{text-align:center;border-radius:14px;padding:6px 4px;background:var(--paper-2)}
+.bd-date .m{display:block;font-size:.78rem;font-weight:700;color:var(--ink-soft)}
+.bd-date .d{display:block;font-family:var(--serif);font-size:1.35rem;line-height:1.15;white-space:nowrap}
+.bd-date.tba{background:transparent;border:1.5px dashed var(--line)}
+.bd-date.tba .d{font-family:var(--sans);font-size:.85rem;font-weight:700;padding:4px 0}
+.bdhw .bd-date:not(.tba){background:var(--marigold-tint)}
+.bdhol .bd-date:not(.tba){background:var(--lilac-tint)}
+.bd strong{display:block;font-size:1.05rem;line-height:1.3}
+.bd span.w{display:block;color:var(--ink-soft);font-size:.93rem}
+.bd p{margin:4px 0 0;color:var(--ink-soft);font-size:.93rem}
+.linkbtn{appearance:none;background:none;border:0;padding:0;font:inherit;font-size:.93rem;font-weight:600;color:var(--harbor);text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-top:6px}
+
+/* share */
+.share{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:start}
+@media (max-width:760px){.share{grid-template-columns:1fr}}
+.btn{display:inline-block;background:var(--elm);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:999px}
+.btn:hover{background:color-mix(in srgb,var(--elm) 85%,black)}
+:root[data-theme="dark"] .btn{color:#0F1716}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn{color:#0F1716}}
+footer{padding:36px 0 48px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#today" aria-label="New Haven Moms, home">
+      <svg width="38" height="38" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#FFD166"></circle><g transform="rotate(24 32 32) translate(2 3)"><path d="M32 6 C46 14 52 26 49 40 C46 51 39 57 32 58 C25 57 18 51 15 40 C12 26 18 14 32 6 Z" fill="#17363A" transform="translate(32 32) scale(0.82) translate(-32 -32)"></path></g><g transform="rotate(24 32 32)"><path d="M32 6 C46 14 52 26 49 40 C46 51 39 57 32 58 C25 57 18 51 15 40 C12 26 18 14 32 6 Z" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round" transform="translate(32 32) scale(0.78) translate(-32 -32)"></path><path d="M32 6 C46 14 52 26 49 40 C46 51 39 57 32 58 C25 57 18 51 15 40 C12 26 18 14 32 6 Z" fill="#2E8B57" transform="translate(32 32) scale(0.78) translate(-32 -32)"></path><path d="M32 18 V52 M32 28 L26 23 M32 36 L39 31 M32 44 L27 40" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"></path></g></svg>
+      <span>New Haven Moms</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#bigdays">Big days</a>
+      <a href="#events">Calendar</a>
+      <a href="#things">Things to do</a>
+      <a href="#resources">Resources</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="today">
+    <div class="band"><div class="wrap">
+      <h1>What are we doing today?</h1>
+      <p class="lede">Storytimes, festivals, museum days, farm mornings and classes for little ones around New Haven, checked and gathered in one place. Tap a day to see what's on.</p>
+      <div class="days" id="days" role="group" aria-label="Pick a day this week"></div>
+    </div></div>
+    <div class="wrap">
+      <div class="dayhead"><h2 id="dayTitle">Today</h2></div>
+      <ul class="list" id="dayList" aria-live="polite"></ul>
+    </div>
+  </section>
+
+  <section class="block" id="bigdays">
+    <div class="wrap">
+      <h2 class="sec">Big days this fall</h2>
+      <p class="intro">The once-a-year stuff worth planning around: festivals, Halloween fun and holiday shows. Tap one to jump to it on the calendar.</p>
+      <div class="bigdays" id="bigList"></div>
+    </div>
+  </section>
+
+  <section class="block" id="events">
+    <div class="wrap">
+      <h2 class="sec">The fall calendar</h2>
+      <p class="intro">Everything we're tracking through December, week by week. Narrow it down by age, or show only the free and drop-in stuff.</p>
+      <div class="filters">
+        <div class="fgroup" role="group" aria-label="Filter by age">
+          <span class="flabel">Ages</span>
+          <button class="chip" data-age="all" aria-pressed="true">All</button>
+          <button class="chip" data-age="baby" aria-pressed="false">Babies</button>
+          <button class="chip" data-age="toddler" aria-pressed="false">Toddlers</button>
+          <button class="chip" data-age="preschool" aria-pressed="false">Preschool</button>
+          <button class="chip" data-age="big" aria-pressed="false">Big kids</button>
+        </div>
+        <div class="fgroup" role="group" aria-label="Other filters">
+          <span class="flabel">Show only</span>
+          <button class="chip" data-toggle="free" aria-pressed="false">Free</button>
+          <button class="chip" data-toggle="dropin" aria-pressed="false">Drop-in</button>
+          <button class="chip" data-toggle="special" aria-pressed="false">Big days</button>
+        </div>
+      </div>
+      <div class="weeknav">
+        <button class="navbtn" id="prevWeek" aria-label="Previous week">‹</button>
+        <button class="navbtn" id="nextWeek" aria-label="Next week">›</button>
+        <h3 id="weekTitle" aria-live="polite"></h3>
+      </div>
+      <div id="weekList"></div>
+      <p class="fineprint">Holiday closures aren't reflected here. Events marked "Check first" are recurring slots we haven't been able to confirm for every date, so look at the organizer's page before you head out. Open any event for its source link.</p>
+    </div>
+  </section>
+
+  <section class="block" id="things">
+    <div class="wrap">
+      <h2 class="sec">Things to do anytime</h2>
+      <p class="intro">No schedule needed. Good for the mornings when everyone's up at 6 and you need somewhere to be by 9.</p>
+      <div class="places">
+        <div>
+          <h3>Get outside</h3>
+          <ul>
+            <li><strong>East Rock Park</strong><span>Trails, a summit with views over the city and harbor, and plenty of room to run.</span></li>
+            <li><strong>Lighthouse Point Park</strong><span>Beach, the old lighthouse, and a historic carousel that runs in season.</span></li>
+            <li><strong>Edgewood Park</strong><span>A big neighborhood park with a playground, pond and paths for scooters and strollers.</span></li>
+            <li><strong>Common Ground</strong><span>Farm animals and gardens on Springside Ave. Saturday Open Farm Days are free through November.</span></li>
+            <li><strong>Wooster Square</strong><span>A stroller loop under the trees, and famous cherry blossoms in April. Pizza is right there.</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="rain">Rainy day, indoors</h3>
+          <ul>
+            <li><strong>Yale Peabody Museum</strong><span>Dinosaurs, dioramas and weekend story times. Free admission.</span></li>
+            <li><strong>Connecticut Children's Museum</strong><span>Hands-on play for small kids on Wall St. Open Thursday afternoons, Friday and Saturday.</span></li>
+            <li><strong>Yale Center for British Art</strong><span>Free, calm, and hosts Make Time! family art afternoons on fourth Saturdays.</span></li>
+            <li><strong>Yale University Art Gallery</strong><span>Free and stroller-friendly, with a lot of room to wander.</span></li>
+            <li><strong>Your library branch</strong><span>Every NHFPL branch has a children's room, and Stay &amp; Play runs somewhere almost every weekday.</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="drive">Worth a short drive</h3>
+          <ul>
+            <li><strong>Shoreline Trolley Museum</strong><span>Real trolley rides in East Haven, seasonal. A hit with anyone who loves vehicles.</span></li>
+            <li><strong>Connecticut's Beardsley Zoo</strong><span>About half an hour away in Bridgeport, sized just right for little legs.</span></li>
+            <li><strong>Hammonasset Beach</strong><span>Long boardwalk and a nature center in Madison. Lovely in fall with no crowds.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="resources">
+    <div class="wrap">
+      <h2 class="sec">Resources for moms</h2>
+      <p class="intro">Help with the big things and the everyday things, from pregnancy through the toddler years.</p>
+
+      <div class="help">
+        <h3>If you're struggling right now</h3>
+        <div>
+          <span class="line">National Maternal Mental Health Hotline</span>
+          <a class="num" href="tel:18338526262">1-833-852-6262</a>
+          <p>Call or text, 24/7, for pregnant and new moms. Free and in English and Spanish.</p>
+        </div>
+        <div>
+          <span class="line">Postpartum Support International</span>
+          <a class="num" href="tel:18009444773">1-800-944-4773</a>
+          <p>Helpline for postpartum depression and anxiety, plus free online support groups.</p>
+        </div>
+        <div>
+          <span class="line">Connecticut 2-1-1</span>
+          <a class="num" href="tel:211">Dial 2-1-1</a>
+          <p>Connects you to local help with food, housing, utilities, childcare and diapers.</p>
+        </div>
+        <div>
+          <span class="line">Emergency</span>
+          <a class="num" href="tel:911">911</a>
+          <p>For any immediate danger to you or your child.</p>
+        </div>
+      </div>
+
+      <div class="res">
+        <article>
+          <span class="for">Pregnancy to 18 months</span>
+          <h4>New Haven Healthy Start</h4>
+          <p>Care coordination, doula services, lactation support, parenting classes and help enrolling in insurance. Call 203-777-7086.</p>
+          <a href="https://cfgnh.org/leading-on-issues/healthy-families/for-pregnant-women-and-mothers">Learn about Healthy Start</a>
+        </article>
+        <article>
+          <span class="for">Food and nutrition</span>
+          <h4>WIC</h4>
+          <p>Healthy food, formula help and breastfeeding support for pregnant people and kids under 5. Yale New Haven Hospital runs a WIC office in the city.</p>
+          <a href="https://portal.ct.gov/DPH/WIC/Find-a-Local-Agency">Find your WIC office</a>
+        </article>
+        <article>
+          <span class="for">Diapers</span>
+          <h4>The Diaper Bank of Connecticut</h4>
+          <p>Gives out free diapers through partner agencies across the state. Dial 2-1-1 to find the nearest pickup spot.</p>
+          <a href="https://www.thediaperbank.org">Visit the Diaper Bank</a>
+        </article>
+        <article>
+          <span class="for">Health insurance</span>
+          <h4>HUSKY Health</h4>
+          <p>Connecticut's free and low-cost coverage for kids and for pregnant and postpartum moms.</p>
+          <a href="https://www.huskyhealthct.org">Check HUSKY eligibility</a>
+        </article>
+        <article>
+          <span class="for">Development questions</span>
+          <h4>Connecticut Birth to Three</h4>
+          <p>Free early-intervention evaluations if you have questions about how your baby or toddler is talking, moving or playing. You don't need a doctor's referral.</p>
+          <a href="https://www.birth23.org">Visit Birth to Three</a>
+        </article>
+        <article>
+          <span class="for">Paying for childcare</span>
+          <h4>Care 4 Kids</h4>
+          <p>The state's childcare subsidy program for working families.</p>
+          <a href="https://www.ctcare4kids.com">See if you qualify</a>
+        </article>
+        <article>
+          <span class="for">Free, every week</span>
+          <h4>New Haven Free Public Library</h4>
+          <p>Library cards are free for New Haven residents. Branches host Stay &amp; Play, bilingual storytime and more.</p>
+          <a href="https://nhfpl.org/children/storytimesandmore/">See library storytimes</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="share">
+    <div class="wrap share">
+      <div>
+        <h2 class="sec">Know about something we missed?</h2>
+        <p class="intro">This calendar is built by a New Haven mom, one flyer and library newsletter at a time. If you run a class, story hour or meetup for families, send it over and we'll add it.</p>
+      </div>
+      <div>
+        <a class="btn" href="mailto:newhavenmoms@gmail.com?subject=Event%20for%20the%20calendar">Send us an event</a>
+        <p class="fineprint">Or email <a href="mailto:newhavenmoms@gmail.com">newhavenmoms@gmail.com</a>. Include the name, place, day and time, ages, price, and a link if there is one.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>New Haven Moms · made in the Elm City</span>
+    <span>Schedules last checked September 2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+/* ---------- data ---------- */
+const V = {
+  stetson:["NHFPL Stetson Branch","197 Dixwell Ave"],
+  fairhaven:["NHFPL Fair Haven Branch","182 Grand Ave"],
+  mitchell:["NHFPL Mitchell Branch","37 Harrison St"],
+  ives:["NHFPL Ives Main Library","133 Elm St"],
+  wilson:["NHFPL Wilson Branch","303 Washington Ave"],
+  stjohns:["St. John's Episcopal Church","400 Humphrey St"],
+  ccm:["Connecticut Children's Museum","22 Wall St"],
+  cg:["Common Ground","358 Springside Ave"],
+  atwater:["Atwater Senior Center","26 Atwater St"],
+  pebbles:["Pebbles Toys & Gifts","528 Orange St"],
+  trinity:["Trinity on the Green","230 Temple St"],
+  cpc:["CPC New Haven","135 Whitney Ave"],
+  caw:["Creative Arts Workshop","80 Audubon St"],
+  peabody:["Yale Peabody Museum","170 Whitney Ave"],
+  ycba:["Yale Center for British Art","1080 Chapel St"],
+  nhm:["New Haven Museum","114 Whitney Ave"],
+  green:["New Haven Green","250 Temple St"],
+  junta:["Junta for Progressive Action","169 Grand Ave"],
+  shubert:["Shubert Theatre","247 College St"],
+  broadway:["Broadway District","Elm St & Broadway"],
+  hope:["Hope Child Development Center",""],
+  trolley:["Shore Line Trolley Museum","17 River St","East Haven, CT"]
+};
+const NHFPL="https://nhfpl.org/children/storytimesandmore/";
+const LIB={ages:"Birth–5 with a caregiver",a:["baby","toddler","preschool"],price:"Free",free:true,drop:true,src:NHFPL};
+const U="2026-12-31";
+// s: [dow(0=Sun), [[start,end],...], from, until, nth?]
+const E=[
+ {t:"Stay & Play",v:"stetson",...LIB,s:[[1,[["10:00","11:30"]],"2026-09-28",U],[6,[["10:00","11:30"]],"2026-09-26",U]]},
+ {t:"Quédate y Juega · Bilingual Stay & Play",v:"fairhaven",...LIB,s:[[2,[["10:30","11:00"]],"2026-09-29",U]]},
+ {t:"Stay & Play",v:"mitchell",...LIB,s:[[2,[["11:00","12:00"]],"2026-09-29",U],[6,[["11:00","12:00"]],"2026-10-17",U,3]]},
+ {t:"Stay & Play",v:"ives",...LIB,s:[[3,[["11:00","11:30"]],"2026-09-23",U]]},
+ {t:"Stay & Play",v:"wilson",...LIB,s:[[4,[["10:30","11:15"]],"2026-09-24",U]]},
+ {t:"Toddler Tunes",v:"stjohns",ages:"Newborn–6 with a caregiver",a:["baby","toddler","preschool"],price:"Free, donations welcome",free:true,drop:true,check:true,note:"The fall schedule still needs confirming with St. John's.",s:[[3,[["10:30","11:30"]],"2026-09-23",U],[0,[["15:30","16:30"]],"2026-09-27",U]]},
+ {t:"Children's Museum open play",v:"ccm",ages:"Young children and families",a:["baby","toddler","preschool"],price:"$12 per child, $12 per adult, under 12 months free",free:false,drop:true,src:"https://www.childrensbuilding.org/new-home",s:[[4,[["13:00","17:00"]],"2026-09-24",U],[5,[["10:00","15:00"]],"2026-09-25",U],[6,[["10:00","15:00"]],"2026-09-26",U]]},
+ {t:"Open Farm Day",v:"cg",ages:"All ages",a:["baby","toddler","preschool","big"],price:"Free",free:true,drop:true,src:"https://www.commongroundct.org/calendar/open-farm-day",s:[[6,[["10:00","14:00"]],"2026-09-26","2026-11-30"]]},
+ {t:"ARTE Saturday Academy",v:"atwater",ages:"Ages 7–17",a:["big"],price:"Free",free:true,drop:false,note:"Meets nearly every Saturday. Check with the program about holiday weekends and how to enroll.",s:[[6,[["10:15","12:00"]],"2026-09-26",U]]},
+ {t:"Storytime at Pebbles",v:"pebbles",ages:"Young children",a:["toddler","preschool"],price:"Free",free:true,drop:true,src:"https://pebblestoys.com/pages/contact",s:[[6,[["10:30","11:00"]],"2026-09-26",U],[0,[["11:00","11:30"]],"2026-09-27",U]]},
+ {t:"Children's Chapel",v:"trinity",ages:"Children, in groups for 7 and under and 8 and up",a:["preschool","big"],price:"Free",free:true,drop:true,src:"https://www.trinitynewhaven.org/children-youth-and-family-ministry-events",s:[[0,[["10:30","11:30"]],"2026-09-27",U]]},
+ {t:"Children's Sunday School",v:"cpc",ages:"Age 2 through teens",a:["toddler","preschool","big"],price:"Free",free:true,drop:true,src:"https://cpcnewhaven.org/sundays.html",s:[[0,[["10:30","11:30"]],"2026-09-27",U]]},
+ {t:"Seedlings nature class",v:"cg",ages:"Young children with a caregiver",a:["toddler","preschool"],price:"$195 for 10 weeks (Wednesday: $175 for 9 weeks)",free:false,drop:false,src:"https://www.commongroundct.org/about-seedlings",s:[[1,[["09:00","10:30"],["13:00","14:30"]],"2026-09-14","2026-11-16"],[3,[["09:00","10:30"]],"2026-09-23","2026-11-18"],[5,[["09:00","10:30"]],"2026-09-11","2026-11-13"]]},
+ {t:"Art With You and Me",v:"caw",ages:"Ages 3–4 with an adult",a:["preschool"],price:"$233 for 7 classes",free:false,drop:false,src:"https://creativeartsworkshop.org/courses/no-term/art-with-you-and-me/",s:[[3,[["09:30","10:30"]],"2026-09-16","2026-10-28"],[3,[["09:30","10:30"]],"2026-11-04","2026-12-16"],[6,[["09:30","10:30"]],"2026-09-19","2026-10-31"],[6,[["09:30","10:30"]],"2026-11-07","2026-12-19"]]},
+ {t:"Art Stuff n' Fun",v:"caw",ages:"Ages 4–6",a:["preschool","big"],price:"$177.50 for 7 classes",free:false,drop:false,src:"https://creativeartsworkshop.org/courses/no-term/art-stuff-n-fun/",s:[[6,[["11:00","12:00"]],"2026-09-19","2026-10-31"],[6,[["11:00","12:00"]],"2026-11-07","2026-12-19"]]},
+ {t:"Toddler Time at the Peabody",v:"peabody",ages:"Ages 1–3",a:["toddler"],price:"Free",free:true,drop:true,check:true,note:"Usually the first Saturday of the month. Oct 3 is confirmed; check each month's listing, since registration may be required.",src:"https://peabody.yale.edu/events/toddler-time",s:[[6,[["11:00","12:00"]],"2026-10-03",U,1]]},
+ {t:"Make Time! family art",v:"ycba",ages:"Designed for ages 5–12, everyone welcome",a:["preschool","big"],price:"Free",free:true,drop:true,src:"https://britishart.yale.edu/exhibitions-programs/make-time-see-touch-landscapes",s:[[6,[["14:00","16:00"]],"2026-09-26",U,4]]},
+ {t:"Free First Sunday",v:"nhm",ages:"All ages",a:["baby","toddler","preschool","big"],price:"Free",free:true,drop:true,src:"https://www.newhavenmuseum.org/free-first-sunday/",s:[[0,[["13:00","16:00"]],"2026-10-04",U,1]]},
+ {t:"Story Time at the Peabody",v:"peabody",ages:"Best for 8 and under",a:["toddler","preschool","big"],price:"Free",free:true,drop:true,check:true,note:"Half-hour story times, several each weekend afternoon. Check the Peabody calendar for date-specific changes.",s:[[6,[["11:00","11:30"],["12:00","12:30"],["13:00","13:30"],["14:00","14:30"]],"2026-09-26",U],[0,[["12:30","13:00"],["13:30","14:00"],["14:30","15:00"],["15:30","16:00"]],"2026-09-27",U]]}
+];
+const ALL=["baby","toddler","preschool","big"];
+E.push(
+ {t:"New Haven Grand Prix & Apizza Feast",v:"green",special:"fall",ages:"All ages",a:ALL,price:"Free. The pizza-costume world-record attempt is ticketed.",free:true,drop:true,blurb:"Bike races around the Green, 70+ vendors and New Haven's famous apizza. The pizza-costume world-record attempt is 6–7pm on the Green. College St between Crown and Elm closes at 9am, nearby blocks at noon.",src:"https://visitnewhaven.com/events/new-haven-grand-prix/",when:[{from:"2026-09-25",t:[["16:00","22:00"]]}]},
+ {t:"¡Fiesta Latina!",v:"junta",special:"fall",ages:"All ages",a:ALL,price:"Free",free:true,drop:true,blurb:"A celebration of Hispanic cultures with music and community programming, hosted by Junta and the Peabody. Saturday is at Junta; Sunday's performances are at the Peabody.",src:"https://peabody.yale.edu/events/fiesta-latina-2026",when:[{from:"2026-09-26",t:[["12:00","17:00"]]}]},
+ {t:"¡Fiesta Latina!",v:"peabody",special:"fall",ages:"All ages",a:ALL,price:"Free",free:true,drop:true,blurb:"A day of performances at the Peabody, part of the weekend celebration of Hispanic cultures with Junta for Progressive Action.",src:"https://peabody.yale.edu/events/fiesta-latina-2026",when:[{from:"2026-09-27",t:[["12:00","17:00"]]}]},
+ {t:"New Haven Chalk Art Festival",v:"broadway",special:"fall",ages:"All ages",a:ALL,price:"Free",free:true,drop:true,blurb:"60+ artists chalk the Broadway District from noon to 3:30, and there's a Family Fun Zone with free chalk. Rain date is Oct 4. Free parking at the 150 York St garage with a validation stamp.",src:"https://theshopsatyale.com/chalkart/",when:[{from:"2026-10-03",t:[["12:00","15:30"]]}]},
+ {t:"THE WIZ",v:"shubert",special:"fall",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,blurb:"The Tony-winning musical on tour. A good first Broadway-style show for bigger kids.",src:"https://www.shubert.com/events/detail/the-wiz",when:[{from:"2026-10-01",to:"2026-10-04",t:[]}]},
+ {t:"Elmo's Got the Moves (Sesame Street Live!)",v:"shubert",special:"fall",ages:"Toddlers and preschoolers",a:["toddler","preschool"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/elmos-got-the-moves",when:[{from:"2026-10-09",t:[["18:00",null]]}]},
+ {t:"Faith & Family Fall Festival",v:"hope",special:"fall",ages:"All ages",a:ALL,price:"RSVP on Eventbrite",rsvp:true,blurb:"Fall activities, food and fun celebrating 25 years of Hope Child Development Center. Rain date is Oct 24.",src:"https://www.eventbrite.com/e/2nd-annual-faith-family-fall-festival-tickets-1993959908763",when:[{from:"2026-10-17",t:[["13:00","16:00"]]}]},
+ {t:"Shubert Free Family Fun Day",v:"shubert",special:"hw",ages:"All ages; costumes welcome for kids under 12",a:ALL,price:"Free",free:true,drop:true,rsvp:true,blurb:"A self-guided backstage tour of the Shubert with trick-or-treat stations along the way. Come in costume, but leave prop weapons at home. It kicks off the Shubert's holiday food and toy drive, so bring a donation if you can.",src:"https://www.shubert.com/events/detail/free-family-fun-day",when:[{from:"2026-10-25",t:[["10:00","13:00"]]}]},
+ {t:"How the Grinch Stole Christmas! The Musical",v:"shubert",special:"hol",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/dr-seuss-how-the-grinch-stole-christmas-the-musical",when:[{from:"2026-11-18",to:"2026-11-22",t:[]}]},
+ {t:"The Nutcracker (New Haven Ballet)",v:"shubert",special:"hol",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/new-haven-ballet-presents-the-nutcracker",when:[{from:"2026-12-11",to:"2026-12-13",t:[]}]},
+ {t:"The Hip Hop Nutcracker",v:"shubert",special:"hol",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/the-hip-hop-nutcracker",when:[{from:"2026-12-22",t:[["19:00",null]]}]}
+);
+const TBA=[
+ {g:"hw",t:"Pumpkin Patch Trolley",w:"Shore Line Trolley Museum, East Haven",p:"A non-spooky trolley ride to pick a little pumpkin, usually on October weekends. 2026 dates aren't posted yet.",src:"https://shorelinetrolley.org/"},
+ {g:"hw",t:"Spooktacular at the Peabody",w:"Yale Peabody Museum",p:"Free costume day for kids up to 10, held on a late-October Saturday in past years. Watch for the 2026 date.",src:"https://peabody.yale.edu/events/upcoming"},
+ {g:"hol",t:"City Tree Lighting",w:"New Haven Green",p:"Music, performances and amusement rides as the big tree lights up. Usually early December; the 2026 date is still to be announced.",src:"https://theshopsatyale.com/holiday/"}
+];
+
+/* ---------- helpers ---------- */
+const DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const DOWL=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MONL=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const pd=s=>{const[y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)};
+const key=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function fmt(t){let[h,m]=t.split(":").map(Number);const ap=h>=12?"pm":"am";h=h%12||12;return m?`${h}:${String(m).padStart(2,"0")}`+ap:h+ap}
+function fmtShort(t){let[h,m]=t.split(":").map(Number);h=h%12||12;return m?`${h}:${String(m).padStart(2,"0")}`:String(h)}
+const mins=t=>{const[h,m]=t.split(":").map(Number);return h*60+m};
+
+function occursOn(sc,d){
+  const[dow,,from,until,nth]=sc;
+  if(d.getDay()!==dow)return false;
+  const k=key(d); if(k<from||k>until)return false;
+  if(nth){return Math.ceil(d.getDate()/7)===nth}
+  return true;
+}
+function eventsOn(d){
+  const out=[];
+  const k=key(d);
+  E.forEach(e=>{
+    if(e.s)e.s.forEach(sc=>{if(occursOn(sc,d))out.push({e,times:sc[1]})});
+    if(e.when)e.when.forEach(w=>{if(k>=w.from&&k<=(w.to||w.from))out.push({e,times:w.t})});
+  });
+  // merge duplicate event on same day (e.g., two sessions)
+  const m=new Map();
+  out.forEach(o=>{const k=o.e.t+o.e.v;if(m.has(k))m.get(k).times=m.get(k).times.concat(o.times);else m.set(k,{e:o.e,times:o.times.slice()})});
+  const st=o=>o.times.length?mins(o.times[0][0]):9999;
+  return [...m.values()].map(o=>{o.times.sort((a,b)=>mins(a[0])-mins(b[0]));return o}).sort((a,b)=>st(a)-st(b));
+}
+function timeLabel(times){
+  if(!times.length)return `Showtimes<small>vary, see listing</small>`;
+  if(times.length===1)return times[0][1]?`${fmt(times[0][0])}<small>to ${fmt(times[0][1])}</small>`:`${fmt(times[0][0])}<small>start</small>`;
+  const dur=mins(times[0][1])-mins(times[0][0]);
+  const same=times.every(t=>mins(t[1])-mins(t[0])===dur);
+  const first=fmt(times[0][0]);
+  const rest=times.slice(1).map(t=>fmtShort(t[0]));
+  return `${first}<small>also ${rest.join(", ")}${same?` · ${dur} min each`:""}</small>`;
+}
+const town=v=>V[v][2]||"New Haven, CT";
+const addrLine=v=>(V[v][1]?V[v][1]+", ":"")+town(v).replace(", CT","");
+const mapUrl=v=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(V[v][0]+", "+(V[v][1]?V[v][1]+", ":"")+town(v));
+let uid=0;
+function row(o){
+  const e=o.e,[place,addr]=V[e.v];
+  const tags=[];
+  if(e.special)tags.push('<span class="tag special">Big day</span>');
+  if(e.free)tags.push('<span class="tag free">Free</span>');
+  if(e.ticket)tags.push('<span class="tag signup">Tickets</span>');
+  else if(e.drop&&e.rsvp)tags.push('<span class="tag drop">Drop-in</span><span class="tag signup">RSVP suggested</span>');
+  else if(e.drop)tags.push('<span class="tag drop">Drop-in</span>');
+  else if(e.rsvp)tags.push('<span class="tag signup">RSVP</span>');
+  else tags.push('<span class="tag signup">Sign up ahead</span>');
+  if(e.check)tags.push('<span class="tag check">Check first</span>');
+  const id="ev"+(uid++);
+  return `<li class="ev"><details><summary aria-describedby="${id}">
+    <span class="ev-time">${timeLabel(o.times)}</span>
+    <span><span class="ev-title">${esc(e.t)}</span><span class="ev-place" id="${id}">${esc(place)}</span><span class="tags">${tags.join("")}</span></span>
+    <span class="chev" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg></span>
+  </summary>
+  <div class="ev-more">
+    <dl><dt>Ages</dt><dd>${esc(e.ages)}</dd><dt>Cost</dt><dd>${esc(e.price)}</dd><dt>Where</dt><dd><a href="${mapUrl(e.v)}" target="_blank" rel="noopener">${esc(e.special?place+", "+addrLine(e.v):addrLine(e.v))}</a></dd></dl>
+    ${e.blurb?`<p>${esc(e.blurb)}</p>`:""}
+    ${e.note?`<p>${esc(e.note)}</p>`:""}
+    ${e.src?`<p><a href="${e.src}" target="_blank" rel="noopener">See the organizer's page</a></p>`:""}
+  </div></details></li>`;
+}
+
+/* ---------- hero: this week ---------- */
+const today=new Date();today.setHours(0,0,0,0);
+const daysEl=document.getElementById("days"),dayList=document.getElementById("dayList"),dayTitle=document.getElementById("dayTitle");
+let sel=0;
+function renderDays(){
+  daysEl.innerHTML="";
+  for(let i=0;i<7;i++){
+    const d=addDays(today,i),n=eventsOn(d).length;
+    const b=document.createElement("button");
+    b.className="day"+([0,6].includes(d.getDay())?" wkend":"");b.type="button";b.setAttribute("aria-pressed",i===sel?"true":"false");
+    b.innerHTML=`<span class="dow">${i===0?"Today":DOW[d.getDay()]}</span><span class="num">${d.getDate()}</span><span class="cnt">${n} ${n===1?"thing":"things"}</span>`;
+    b.setAttribute("aria-label",`${DOWL[d.getDay()]}, ${MONL[d.getMonth()]} ${d.getDate()}, ${n} events`);
+    b.onclick=()=>{sel=i;renderDays();renderDay()};
+    daysEl.appendChild(b);
+  }
+}
+function renderDay(){
+  const d=addDays(today,sel),list=eventsOn(d);
+  dayTitle.textContent=(sel===0?"Today, ":sel===1?"Tomorrow, ":"")+`${DOWL[d.getDay()]} ${MONL[d.getMonth()]} ${d.getDate()}`;
+  dayList.innerHTML=list.length?list.map(row).join(""):`<li class="empty">Nothing on the calendar this day. Try a park or museum from <a href="#things">things to do</a>.</li>`;
+}
+renderDays();renderDay();
+
+/* ---------- full calendar ---------- */
+const weekList=document.getElementById("weekList"),weekTitle=document.getElementById("weekTitle");
+const prevB=document.getElementById("prevWeek"),nextB=document.getElementById("nextWeek");
+const monday=d=>{const x=new Date(d);x.setDate(x.getDate()-((x.getDay()+6)%7));return x};
+const firstWeek=monday(today),lastWeek=monday(pd(U));
+let wk=new Date(firstWeek);
+const f={age:"all",free:false,dropin:false,special:false};
+function pass(e){
+  if(f.age!=="all"&&!e.a.includes(f.age))return false;
+  if(f.free&&!e.free)return false;
+  if(f.dropin&&!e.drop)return false;
+  if(f.special&&!e.special)return false;
+  return true;
+}
+function renderWeek(){
+  const end=addDays(wk,6);
+  weekTitle.textContent=wk.getMonth()===end.getMonth()?`${MON[wk.getMonth()]} ${wk.getDate()}–${end.getDate()}`:`${MON[wk.getMonth()]} ${wk.getDate()} – ${MON[end.getMonth()]} ${end.getDate()}`;
+  prevB.disabled=wk<=firstWeek;nextB.disabled=wk>=lastWeek;
+  let html="",total=0;
+  for(let i=0;i<7;i++){
+    const d=addDays(wk,i);if(d<today)continue;
+    const list=eventsOn(d).filter(o=>pass(o.e));if(!list.length)continue;
+    total+=list.length;
+    html+=`<div class="weekday"><h4>${DOWL[d.getDay()]}, ${MON[d.getMonth()]} ${d.getDate()}</h4><ul class="list">${list.map(row).join("")}</ul></div>`;
+  }
+  weekList.innerHTML=total?html:`<p class="empty">Nothing matches those filters this week. Try another age group, or turn off "Free" or "Drop-in".</p>`;
+}
+prevB.onclick=()=>{wk=addDays(wk,-7);renderWeek()};
+nextB.onclick=()=>{wk=addDays(wk,7);renderWeek()};
+document.querySelectorAll("[data-age]").forEach(b=>b.onclick=()=>{
+  f.age=b.dataset.age;document.querySelectorAll("[data-age]").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));renderWeek();
+});
+document.querySelectorAll("[data-toggle]").forEach(b=>b.onclick=()=>{
+  const k=b.dataset.toggle;f[k]=!f[k];b.setAttribute("aria-pressed",f[k]?"true":"false");renderWeek();
+});
+renderWeek();
+
+/* ---------- big days ---------- */
+(function(){
+  const groups={fall:{h:"Fall festivals",c:""},hw:{h:"Halloween",c:"hw"},hol:{h:"Holidays",c:"hol"}};
+  const byTitle=new Map();
+  E.filter(e=>e.special).forEach(e=>{
+    const w=e.when[0],from=w.from,to=e.when[e.when.length-1].to||e.when[e.when.length-1].from;
+    const cur=byTitle.get(e.t);
+    if(cur){cur.to=to>cur.to?to:cur.to;cur.places.push(V[e.v][0])}
+    else byTitle.set(e.t,{g:e.special,t:e.t,from,to,places:[V[e.v][0]],p:e.blurb||"",src:e.src});
+  });
+  const items=[...byTitle.values()].filter(i=>i.to>=key(today)).sort((a,b)=>a.from<b.from?-1:1);
+  const html=Object.entries(groups).map(([g,info])=>{
+    const dated=items.filter(i=>i.g===g).map(i=>{
+      const a=pd(i.from),b=pd(i.to);
+      const d=i.from===i.to?a.getDate():(a.getMonth()===b.getMonth()?`${a.getDate()}–${b.getDate()}`:`${a.getDate()}–${MON[b.getMonth()]} ${b.getDate()}`);
+      return `<li class="bd"><span class="bd-date"><span class="m">${MON[a.getMonth()]}</span><span class="d">${d}</span></span>
+        <span><strong>${esc(i.t)}</strong><span class="w">${esc([...new Set(i.places)].join(" and "))}</span>
+        <button class="linkbtn" type="button" data-jump="${i.from}">See it on the calendar</button></span></li>`;
+    }).join("");
+    const tba=TBA.filter(i=>i.g===g).map(i=>`<li class="bd"><span class="bd-date tba"><span class="d">TBA</span></span>
+        <span><strong>${esc(i.t)}</strong><span class="w">${esc(i.w)}</span><p>${esc(i.p)}</p>
+        <a class="linkbtn" href="${i.src}" target="_blank" rel="noopener">Check for dates</a></span></li>`).join("");
+    return `<div class="bdcol${info.c?" bd"+info.c:""}"><h3 class="${info.c}">${info.h}</h3><ol>${dated}${tba}</ol></div>`;
+  }).join("");
+  const el=document.getElementById("bigList");el.innerHTML=html;
+  el.addEventListener("click",ev=>{
+    const b=ev.target.closest("[data-jump]");if(!b)return;
+    const d=pd(b.dataset.jump);wk=monday(d<today?today:d);renderWeek();
+    document.getElementById("events").scrollIntoView();
+  });
+})();
+})();
+</script>
+</body>
+</html>
