@@ -537,12 +537,13 @@ dialog.sheet{border-radius:0;border:1.5px solid var(--ink);box-shadow:8px 8px 0 
   .cls{box-shadow:4px 4px 0 var(--ink)}
 }
 @media (max-width:560px){.days{gap:6px}.band .day{border-radius:0;min-height:70px}}
-.bandwrap{position:relative}
-.badge{position:absolute;right:20px;top:-14px;transform:rotate(-8deg);filter:drop-shadow(5px 5px 0 #1B2A4A)}
-.badge .spin{transform-origin:100px 100px;animation:spin 40s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.badge .spin{animation:none}}
-@media (max-width:980px){.badge{display:none}}
+.bandwrap{text-align:center}
+.bandwrap .days,.bandwrap .herorow,.bandwrap .fig{text-align:left}
+.hero h1{max-width:none}
+.band .lede{margin-left:auto;margin-right:auto}
+.days{max-width:900px;margin-left:auto;margin-right:auto}
+.herorow{max-width:900px;margin-left:auto;margin-right:auto;justify-content:center}
+.fig{max-width:900px;margin-left:auto;margin-right:auto}
 .cgrid{gap:26px!important}
 .bd .rowbtns{gap:0 18px}
 footer .wrap{flex-wrap:wrap}
@@ -579,7 +580,6 @@ section.block h2.sec::before{color:var(--ink-soft)}
 .band .day::before{border-top-color:rgba(27,42,74,.25)}
 .wkbtn{background:#fff;color:#1B2A4A;border-color:#1B2A4A}
 .wkbtn[aria-pressed="true"]{background:#FFD84D;color:#1B2A4A}
-.badge circle:first-of-type{fill:#FFD84D}
 /* tags: 4 simple styles */
 .tag{background:#fff;color:#1B2A4A;border-color:#1B2A4A}
 .tag.free{background:#FFD84D;color:#1B2A4A}
@@ -720,10 +720,14 @@ footer{font-size:.84rem;line-height:1.6}
 .clmore{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:26px;text-align:center}
 .clmore p{margin:0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
 .clmore .act{min-width:230px;justify-content:center}
+
+.bandwrap{position:relative;z-index:1}
+
 </style>
 <script data-goatcounter="https://newhavenmoms.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
+
 <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
 <header class="top">
   <div class="wrap">
@@ -750,13 +754,7 @@ footer{font-size:.84rem;line-height:1.6}
 <main>
   <section class="hero" id="today">
     <div class="band"><div class="wrap bandwrap">
-      <div class="badge" aria-hidden="true"><svg viewBox="0 0 200 200" width="230" height="230">
-<defs><path id="bcirc" d="M100 100 m-76 0 a76 76 0 1 1 152 0 a76 76 0 1 1 -152 0"></path></defs>
-<circle cx="100" cy="100" r="96" fill="#FFD84D" stroke="#1B2A4A" stroke-width="3"></circle>
-<circle cx="100" cy="100" r="62" fill="none" stroke="#1B2A4A" stroke-width="1.5" stroke-dasharray="3 4"></circle>
-<g class="spin"><text font-family="IBM Plex Mono, monospace" font-size="13.5" font-weight="600" fill="#1B2A4A"><textPath href="#bcirc" textLength="474" lengthAdjust="spacing">NEW HAVEN · CONN. · EST. 2026 · ELM CITY ·</textPath></text></g>
-<g transform="translate(100 100) rotate(24) scale(1.45) translate(-32 -32)"><path d="M32 6 C46 14 52 26 49 40 C46 51 39 57 32 58 C25 57 18 51 15 40 C12 26 18 14 32 6 Z" fill="#1B2A4A" transform="translate(34 35) scale(0.82) translate(-32 -32)"></path><path d="M32 6 C46 14 52 26 49 40 C46 51 39 57 32 58 C25 57 18 51 15 40 C12 26 18 14 32 6 Z" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round" transform="translate(32 32) scale(0.78) translate(-32 -32)"></path><path d="M32 6 C46 14 52 26 49 40 C46 51 39 57 32 58 C25 57 18 51 15 40 C12 26 18 14 32 6 Z" fill="#2E8B57" transform="translate(32 32) scale(0.78) translate(-32 -32)"></path><path d="M32 18 V52 M32 28 L26 23 M32 36 L39 31 M32 44 L27 40" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"></path></g>
-</svg></div>
+
       <h1 data-i18n="h1">What are we doing <em>today?</em></h1>
       <p class="lede" data-i18n="lede">Storytimes, festivals, museum days, farm mornings and classes for little ones around New Haven, checked and gathered in one place. Tap a day to see what's on.</p>
       <p class="fig" data-i18n="fig1">The week ahead in New Haven, Conn.</p>
@@ -771,6 +769,7 @@ footer{font-size:.84rem;line-height:1.6}
       <ul class="list" id="dayList" aria-live="polite"></ul>
     </div>
   </section>
+
 
   <section class="block" id="bigdays">
     <div class="wrap">
@@ -1146,7 +1145,7 @@ r1_for:"Del embarazo a los 18 meses",r1_p:"Coordinación de servicios, doulas, a
 ct_title:"Contáctanos",ct_intro:"Este calendario lo arma una mamá de New Haven, un volante y un boletín de la biblioteca a la vez. Así puedes sumarte, apoyarlo o simplemente saludar.",ce_title:"Cuéntanos de un evento",ce_p:"¿Organizas una clase, cuentacuentos, festival o reunión para familias? ¿Viste un volante en la biblioteca? Envíanoslo y lo agregamos al calendario.",ce_help:"Es útil incluir:",ce_list:"<li>Nombre y lugar</li><li>Día y hora</li><li>Edades y precio</li><li>Un enlace, si lo hay</li>",ce_btn:"Envíanos un evento",cs_title:"Patrocina New Haven Moms",cs_p:"Los negocios y organizaciones locales que atienden a familias pueden patrocinar el calendario, una sección del sitio o nuestro Instagram. Es una forma de llegar a familias de New Haven y ayudar a que este recurso siga siendo gratis.",cs_p2:"Escríbenos y te enviamos las opciones.",cs_btn:"Pregunta por patrocinios",ch_title:"Saluda",ch_p:"Preguntas, ideas, correcciones o un lugar favorito que debamos conocer. Leemos todo.",ch_btn:"Escríbenos",ch_ig:"Síguenos en @newhavenmoms",
 sh_title:"Compartir",sh_sms:"Mensaje de texto",sh_mail:"Correo",sh_copy:"Copiar enlace",close:"Cerrar",cancel:"Cancelar",
 cal_add_title:"Agregar a tu calendario",cal_apple:"Apple, Outlook u otro calendario",
-ft_made:"New Haven Moms · hecho en la Elm City",fig1:"Fig. 1 — La semana en New Haven, Conn.",ft_note:"¿Preguntas, comentarios o un evento que compartir? Nuestro amable personal te atiende en newhavenmoms@gmail.com. Tu satisfacción es nuestra prioridad número uno.",ft_checked:"Horarios revisados en septiembre de 2026",ft_privacy:"Política de privacidad",
+ft_made:"New Haven Moms · hecho en la Elm City",fig1:"La semana en New Haven, Conn.",ft_note:"¿Preguntas, comentarios o un evento que compartir? Nuestro amable personal te atiende en newhavenmoms@gmail.com. Tu satisfacción es nuestra prioridad número uno.",ft_checked:"Horarios revisados en septiembre de 2026",ft_privacy:"Política de privacidad",
 privacy_body:`<h2 id="privacy-title">Política de privacidad</h2>
 <p class="updated">Vigente desde el 23 de septiembre de 2026</p>
 <p>New Haven Moms (newhavenctmoms.com) es una guía gratuita de eventos, lugares y recursos para familias en New Haven, Connecticut. Lo mantenemos simple: este sitio no tiene cuentas, ni rastreadores de publicidad, ni cookies. Contamos las visitas de forma anónima para saber qué es útil. Esta política explica la poca información que se comparte cuando usas el sitio o nos contactas.</p>
