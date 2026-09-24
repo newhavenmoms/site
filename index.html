@@ -1527,13 +1527,13 @@ let ccat="all";
 const chipsEl=document.getElementById("classChips"),clEl=document.getElementById("classList");
 const ICO_AGE='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"></circle><path d="M5 21a7 7 0 0 1 14 0"></path></svg>';
 let clOpen=false;
-const CL_PEEK=4;
+const peek=()=>isMobile()?4:6;
 function renderClasses(){
   chipsEl.innerHTML=CCATS.map(c=>`<button class="chip" type="button" data-ccat="${c[0]}" aria-pressed="${c[0]===ccat}">${LANG==="es"?c[2]:c[1]}</button>`).join("");
   const catName=k=>{const c=CCATS.find(x=>x[0]===k);return LANG==="es"?c[2]:c[1]};
   const all=CL.filter(c=>ccat==="all"||c.c===ccat);
-  const collapse=isMobile()&&!clOpen&&all.length>CL_PEEK+1;
-  const shown=collapse?all.slice(0,CL_PEEK):all;
+  const P=peek(),collapse=!clOpen&&all.length>P+1;
+  const shown=collapse?all.slice(0,P):all;
   clEl.innerHTML=shown.map(c=>{const t=c[LANG];return `<article class="cls" id="cl-${c.id}">
     <div class="cls-top"><div><span class="ctag ${c.c}">${catName(c.c)}</span><h3>${esc(c.n)}</h3></div>
     <button class="sharebtn" type="button" data-share-c="${c.id}" aria-label="${esc(tx("share"))}: ${esc(c.n)}">${ICO.share}</button></div>
@@ -1543,15 +1543,15 @@ function renderClasses(){
   </article>`}).join("");
   const es=LANG==="es";
   let more="";
-  if(collapse)more=`<div class="clmore"><p>${es?`Mostrando ${CL_PEEK} de ${all.length}`:`Showing ${CL_PEEK} of ${all.length}`}</p><button class="act primary" type="button" data-clmore="open">${es?`Ver las ${all.length} clases`:`Show all ${all.length} classes`}</button></div>`;
-  else if(isMobile()&&clOpen&&all.length>CL_PEEK+1)more=`<div class="clmore"><button class="act" type="button" data-clmore="close">${es?"Ver menos":"Show fewer"}</button></div>`;
+  if(collapse)more=`<div class="clmore"><p>${es?`Mostrando ${P} de ${all.length}`:`Showing ${P} of ${all.length}`}</p><button class="act primary" type="button" data-clmore="open">${es?`Ver las ${all.length} clases`:`Show all ${all.length} classes`}</button></div>`;
+  else if(clOpen&&all.length>P+1)more=`<div class="clmore"><button class="act" type="button" data-clmore="close">${es?"Ver menos":"Show fewer"}</button></div>`;
   let m=document.getElementById("clMore");if(!m){m=document.createElement("div");m.id="clMore";clEl.after(m)}
   m.innerHTML=more;
 }
 chipsEl.addEventListener("click",ev=>{const b=ev.target.closest("[data-ccat]");if(!b)return;ccat=b.dataset.ccat;clOpen=false;renderClasses()});
 document.getElementById("classes").addEventListener("click",ev=>{
   const b=ev.target.closest("[data-clmore]");if(!b)return;
-  if(b.dataset.clmore==="open"){clOpen=true;renderClasses();const n=clEl.children[CL_PEEK];if(n)n.querySelector("h3").setAttribute("tabindex","-1"),n.querySelector("h3").focus({preventScroll:true})}
+  if(b.dataset.clmore==="open"){clOpen=true;renderClasses();const n=clEl.children[peek()];if(n)n.querySelector("h3").setAttribute("tabindex","-1"),n.querySelector("h3").focus({preventScroll:true})}
   else{clOpen=false;renderClasses();document.getElementById("classes").scrollIntoView()}
 });
 document.addEventListener("click",ev=>{
@@ -1593,6 +1593,10 @@ function applyLang(){
   document.querySelectorAll(".tabbar [data-tab] span").forEach(s=>{const m={classes:["Classes","Clases"],today:["Today","Hoy"],bigdays:["Big days","Especiales"],events:["Calendar","Calendario"],things:["To do","Qué hacer"],resources:["Help","Ayuda"]}[s.parentElement.dataset.tab];s.textContent=es?m[1]:m[0]});
   renderHoods();renderDays();renderDay();renderWeek();renderBig();renderClasses();renderTicker();
 }
+(function(){const mq=window.matchMedia("(max-width:760px)");let last=mq.matches;
+  const re=()=>{if(mq.matches!==last){last=mq.matches;renderWeek();renderClasses()}};
+  if(mq.addEventListener)mq.addEventListener("change",re);else if(mq.addListener)mq.addListener(re);
+  window.addEventListener("resize",re);})();
 document.getElementById("langBtn").onclick=()=>{LANG=LANG==="es"?"en":"es";try{localStorage.setItem("nhm-lang",LANG)}catch(_){}applyLang()};
 applyLang();
 
