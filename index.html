@@ -1073,7 +1073,8 @@ const V = {
   broadway:["Broadway District","Elm St & Broadway"],
   hope:["Hope Child Development Center",""],
   trolley:["Shore Line Trolley Museum","17 River St","East Haven, CT"],
-  ewm:["Eli Whitney Museum & Workshop","915 Whitney Ave","Hamden, CT"]
+  ewm:["Eli Whitney Museum & Workshop","915 Whitney Ave","Hamden, CT"],
+  springglen:["Spring Glen Church","1825 Whitney Ave","Hamden, CT"]
 };
 const NHFPL="https://nhfpl.org/children/storytimesandmore/";
 const LIB={ages:"Birth–5 with a caregiver",a:["baby","toddler","preschool"],price:"Free",free:true,drop:true,src:NHFPL};
@@ -1113,7 +1114,8 @@ E.push(
  {t:"Doctor Gasp and the Eeks",v:"ewm",special:"hw",ages:"Families",a:["preschool","big"],price:"See the museum's page for tickets",check:true,noSignup:true,blurb:"A Halloween concert from folk musician Dan Blakeslee's spooky alter ego, Doctor Gasp, and his band the Eeks. A fun, not-too-scary way to kick off Halloween week.",src:"https://www.eliwhitney.org/events",when:[{from:"2026-10-24",t:[["18:00","20:00"]]}]},
  {t:"How the Grinch Stole Christmas! The Musical",v:"shubert",special:"hol",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/dr-seuss-how-the-grinch-stole-christmas-the-musical",when:[{from:"2026-11-18",to:"2026-11-22",t:[]}]},
  {t:"The Nutcracker (New Haven Ballet)",v:"shubert",special:"hol",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/new-haven-ballet-presents-the-nutcracker",when:[{from:"2026-12-11",to:"2026-12-13",t:[]}]},
- {t:"The Hip Hop Nutcracker",v:"shubert",special:"hol",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/the-hip-hop-nutcracker",when:[{from:"2026-12-22",t:[["19:00",null]]}]}
+ {t:"The Hip Hop Nutcracker",v:"shubert",special:"hol",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/the-hip-hop-nutcracker",when:[{from:"2026-12-22",t:[["19:00",null]]}]},
+ {t:"Spring Glen Neighborhood Kid + Adult Clothing Swap",v:"springglen",special:"fall",ages:"All ages",a:ALL,price:"Free",free:true,drop:true,blurb:"The neighborhood's 6th bi-annual clothing swap. Bring gently used kids' and adult clothing to trade — no shoes, toys or accessories, please — and bring a tote bag to shop with. Leftover clothing goes to local charities. Hosted by Katie and Nette.",note:"Moved due to rain: now at Spring Glen Church, 1825 Whitney Ave, Hamden.",when:[{from:"2026-09-26",t:[["10:00","12:00"]]}]}
 );
 const TBA=[
  {g:"hw",t:"Pumpkin Patch Trolley",w:"Shore Line Trolley Museum, East Haven",p:"A non-spooky trolley ride to pick a little pumpkin, usually on October weekends. 2026 dates aren't posted yet.",src:"https://shorelinetrolley.org/"},
@@ -1122,7 +1124,7 @@ const TBA=[
 ];
 
 /* ---------- venue areas & indoor flags ---------- */
-const VM={stetson:["dixwell",1],fairhaven:["fairhaven",1],mitchell:["westville",1],ives:["downtown",1],wilson:["hill",1],stjohns:["eastrock",1],ccm:["downtown",1],cg:["westville",0],atwater:["fairhaven",1],pebbles:["eastrock",1],trinity:["downtown",1],cpc:["downtown",1],caw:["downtown",1],peabody:["downtown",1],ycba:["downtown",1],nhm:["downtown",1],green:["downtown",0],junta:["fairhaven",null],shubert:["downtown",1],broadway:["downtown",0],hope:["nearby",null],trolley:["nearby",null],ewm:["nearby",1]};
+const VM={stetson:["dixwell",1],fairhaven:["fairhaven",1],mitchell:["westville",1],ives:["downtown",1],wilson:["hill",1],stjohns:["eastrock",1],ccm:["downtown",1],cg:["westville",0],atwater:["fairhaven",1],pebbles:["eastrock",1],trinity:["downtown",1],cpc:["downtown",1],caw:["downtown",1],peabody:["downtown",1],ycba:["downtown",1],nhm:["downtown",1],green:["downtown",0],junta:["fairhaven",null],shubert:["downtown",1],broadway:["downtown",0],hope:["nearby",null],trolley:["nearby",null],ewm:["nearby",1],springglen:["nearby",1]};
 const HOODS=[["all","All neighborhoods","Todas las zonas"],["downtown","Downtown & Yale","Centro y Yale"],["eastrock","East Rock","East Rock"],["westville","Westville & West Rock","Westville y West Rock"],["fairhaven","Fair Haven","Fair Haven"],["hill","The Hill","The Hill"],["dixwell","Dixwell & Newhallville","Dixwell y Newhallville"],["nearby","Other & nearby","Otras y cercanas"]];
 
 /* ---------- language ---------- */
@@ -1193,6 +1195,8 @@ es:{today:"Hoy, ",tomorrow:"Mañana, ",thing:"cosa",things:"cosas",events:"event
 };
 const tx=k=>TX[LANG][k];
 const DATA_ES={
+"The neighborhood's 6th bi-annual clothing swap. Bring gently used kids' and adult clothing to trade — no shoes, toys or accessories, please — and bring a tote bag to shop with. Leftover clothing goes to local charities. Hosted by Katie and Nette.":"El sexto intercambio de ropa semestral del vecindario. Trae ropa de niños y de adultos en buen estado para intercambiar — nada de zapatos, juguetes ni accesorios, por favor — y trae una bolsa de tela para llevarte lo que elijas. La ropa sobrante se dona a organizaciones locales. Organizado por Katie y Nette.",
+"Moved due to rain: now at Spring Glen Church, 1825 Whitney Ave, Hamden.":"Cambio de lugar por la lluvia: ahora será en Spring Glen Church, 1825 Whitney Ave, Hamden.",
 "Birth–5 with a caregiver":"Desde el nacimiento hasta 5 años, con un adulto","Free":"Gratis","Newborn–6 with a caregiver":"Recién nacidos a 6 años, con un adulto","Free, donations welcome":"Gratis, se aceptan donaciones","The fall schedule still needs confirming with St. John's.":"El horario de otoño aún debe confirmarse con St. John's.",
 "Young children and families":"Niños pequeños y familias","$12 per child, $12 per adult, under 12 months free":"$12 por niño, $12 por adulto, menores de 12 meses gratis","All ages":"Todas las edades","Ages 7–17":"De 7 a 17 años","Meets nearly every Saturday. Check with the program about holiday weekends and how to enroll.":"Se reúne casi todos los sábados. Consulta con el programa sobre los fines de semana festivos y cómo inscribirte.",
 "Young children":"Niños pequeños","Children, in groups for 7 and under and 8 and up":"Niños, en grupos de 7 años o menos y de 8 en adelante","Age 2 through teens":"De 2 años hasta adolescentes","Young children with a caregiver":"Niños pequeños con un adulto","$195 for 10 weeks (Wednesday: $175 for 9 weeks)":"$195 por 10 semanas (miércoles: $175 por 9 semanas)",
