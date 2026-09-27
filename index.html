@@ -191,10 +191,11 @@ section.block{padding:64px 0;border-top:1px solid var(--line)}
 .res article:nth-child(3n) .for{color:var(--harbor)}
 
 /* big days */
-.bigdays{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
+.bigdays{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:36px}
 @media (max-width:860px){.bigdays{grid-template-columns:1fr;gap:28px}}
 .bigdays h3{font-family:var(--serif);font-weight:400;font-size:1.4rem;margin:0 0 4px;padding-bottom:8px;border-bottom:3px solid var(--elm)}
 .bigdays h3.hw{border-color:var(--marigold)}
+.bigdays h3.shows{border-color:var(--pool-deep)}
 .bigdays h3.hol{border-color:var(--lilac)}
 .bigdays ol{list-style:none;margin:0;padding:0}
 .bd{display:grid;grid-template-columns:4.2rem 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
@@ -485,6 +486,7 @@ section.block h2.sec::before{content:"No. 0" counter(sec);display:block;font-fam
 .bigdays h3,.places h3{font-family:var(--serif);font-style:italic;font-size:1.8rem;border-bottom:1.5px solid var(--ink)}
 .bigdays h3::after,.places h3::after{content:"";display:block;height:6px;margin-top:8px;background:var(--elm)}
 .bigdays h3.hw::after{background:var(--marigold)}
+.bigdays h3.shows::after{background:var(--pool-deep)}
 .bigdays h3.hol::after{background:var(--lilac)}
 .places h3.rain::after{background:var(--pool-deep)}
 .places h3.drive::after{background:var(--marigold)}
@@ -623,7 +625,7 @@ section.block h2.sec::before{color:var(--ink-soft)}
 #things{background:var(--pool-2)}
 #classes{background:var(--pool-2);background-image:none}
 #contact{background:var(--pool-2)}
-.bigdays h3::after,.bigdays h3.hw::after,.bigdays h3.hol::after,.places h3::after,.places h3.rain::after,.places h3.drive::after{background:var(--ink);height:3px}
+.bigdays h3::after,.bigdays h3.hw::after,.bigdays h3.hol::after,.bigdays h3.shows::after,.places h3::after,.places h3.rain::after,.places h3.drive::after{background:var(--ink);height:3px}
 .bd-date,.bdhw .bd-date:not(.tba),.bdhol .bd-date:not(.tba){background:var(--paper)!important;color:var(--ink)}
 .bd-date .m{color:var(--ink)}
 .ctag,.ctag.music,.ctag.nature,.ctag.dance,.ctag.art,.ctag.swim,.ctag.move,.ctag.build{background:var(--pool-2);color:var(--ink);border-color:var(--ink)}
@@ -797,7 +799,7 @@ footer{font-size:.84rem;line-height:1.6}
   <section class="block" id="bigdays">
     <div class="wrap">
       <h2 class="sec" data-i18n="bd_title">Big days this fall</h2>
-      <p class="intro" data-i18n="bd_intro">The once-a-year stuff worth planning around: festivals, Halloween fun and holiday shows. Tap one to jump to it on the calendar.</p>
+      <p class="intro" data-i18n="bd_intro">The once-a-year stuff worth planning around: festivals, live shows, Halloween fun and holiday favorites. Tap one to jump to it on the calendar.</p>
       <p class="swipehint" data-i18n="bd_swipe">Swipe for Halloween and holidays</p>
       <div class="bigdays" id="bigList"></div>
     </div>
@@ -1136,8 +1138,8 @@ E.push(
  {t:"¡Fiesta Latina!",v:"junta",special:"fall",ages:"All ages",a:ALL,price:"Free",free:true,drop:true,blurb:"A celebration of Hispanic cultures with music and community programming, hosted by Junta and the Peabody. Saturday is at Junta; Sunday's performances are at the Peabody.",src:"https://peabody.yale.edu/events/fiesta-latina-2026",when:[{from:"2026-09-26",t:[["12:00","17:00"]]}]},
  {t:"¡Fiesta Latina!",v:"peabody",special:"fall",ages:"All ages",a:ALL,price:"Free",free:true,drop:true,blurb:"A day of performances at the Peabody, part of the weekend celebration of Hispanic cultures with Junta for Progressive Action.",src:"https://peabody.yale.edu/events/fiesta-latina-2026",when:[{from:"2026-09-27",t:[["12:00","17:00"]]}]},
  {t:"New Haven Chalk Art Festival",v:"broadway",special:"fall",ages:"All ages",a:ALL,price:"Free",free:true,drop:true,blurb:"60+ artists chalk the Broadway District from noon to 3:30, and there's a Family Fun Zone with free chalk. Rain date is Oct 4. Free parking at the 150 York St garage with a validation stamp.",src:"https://theshopsatyale.com/chalkart/",when:[{from:"2026-10-03",t:[["12:00","15:30"]]}]},
- {t:"THE WIZ",v:"shubert",special:"fall",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,blurb:"The Tony-winning musical on tour. A good first Broadway-style show for bigger kids.",src:"https://www.shubert.com/events/detail/the-wiz",when:[{from:"2026-10-01",to:"2026-10-04",t:[]}]},
- {t:"Elmo's Got the Moves (Sesame Street Live!)",v:"shubert",special:"fall",ages:"Toddlers and preschoolers",a:["toddler","preschool"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/elmos-got-the-moves",when:[{from:"2026-10-09",t:[["18:00",null]]}]},
+ {t:"THE WIZ",v:"shubert",special:"shows",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,blurb:"The Tony-winning musical on tour. A good first Broadway-style show for bigger kids.",src:"https://www.shubert.com/events/detail/the-wiz",when:[{from:"2026-10-01",to:"2026-10-04",t:[]}]},
+ {t:"Elmo's Got the Moves (Sesame Street Live!)",v:"shubert",special:"shows",ages:"Toddlers and preschoolers",a:["toddler","preschool"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/elmos-got-the-moves",when:[{from:"2026-10-09",t:[["18:00",null]]}]},
  {t:"Faith & Family Fall Festival",v:"hope",special:"fall",ages:"All ages",a:ALL,price:"RSVP on Eventbrite",rsvp:true,blurb:"Fall activities, food and fun celebrating 25 years of Hope Child Development Center. Rain date is Oct 24.",src:"https://www.eventbrite.com/e/2nd-annual-faith-family-fall-festival-tickets-1993959908763",when:[{from:"2026-10-17",t:[["13:00","16:00"]]}]},
  {t:"Shubert Free Family Fun Day",v:"shubert",special:"hw",ages:"All ages; costumes welcome for kids under 12",a:ALL,price:"Free",free:true,drop:true,rsvp:true,blurb:"A self-guided backstage tour of the Shubert with trick-or-treat stations along the way. Come in costume, but leave prop weapons at home. It kicks off the Shubert's holiday food and toy drive, so bring a donation if you can.",src:"https://www.shubert.com/events/detail/free-family-fun-day",when:[{from:"2026-10-25",t:[["10:00","13:00"]]}]},
  {t:"Doctor Gasp and the Eeks",v:"ewm",special:"hw",ages:"Families",a:["preschool","big"],price:"See the museum's page for tickets",check:true,noSignup:true,blurb:"A Halloween concert from folk musician Dan Blakeslee's spooky alter ego, Doctor Gasp, and his band the Eeks. A fun, not-too-scary way to kick off Halloween week.",src:"https://www.eliwhitney.org/events",when:[{from:"2026-10-24",t:[["18:00","20:00"]]}]},
@@ -1165,7 +1167,7 @@ const ES_UI={
 brand_aria:"New Haven Moms, inicio",sections:"Secciones",nav_big:"Días especiales",nav_cal:"Calendario",nav_things:"Qué hacer",nav_classes:"Clases",cl_title:"Clases y lecciones",cl_intro:"Clases semanales que valen la pena, desde música para bebés y el primer ballet hasta natación y fútbol para preescolares. La mayoría son por temporadas, así que revisa el sitio de cada programa para fechas y precios.",cl_aria:"Filtrar clases",cl_note:'¿Conoces una buena clase que nos falta? <a href="mailto:newhavenmoms@gmail.com?subject=Class%20suggestion">Cuéntanos</a>.',nav_res:"Recursos",nav_contact:"Contacto",ig_aria:"New Haven Moms en Instagram",
 h1:"¿Qué hacemos <em>hoy</em>?",lede:"Cuentacuentos, festivales, días de museo, mañanas en la granja y clases para los más pequeños de New Haven, revisados y reunidos en un solo lugar. Toca un día para ver qué hay.",days_aria:"Elige un día de esta semana",weekend_btn:"Este fin de semana",
 hero_cta:'¿Sabes de algo que nos falta? <a href="mailto:newhavenmoms@gmail.com?subject=Event%20for%20the%20calendar">Cuéntanos de un evento</a>',
-bd_title:"Días especiales este otoño",bd_intro:"Lo que pasa una vez al año y vale la pena planear: festivales, diversión de Halloween y espectáculos navideños. Toca uno para verlo en el calendario.",bd_swipe:"Desliza para ver Halloween y las fiestas",
+bd_title:"Días especiales este otoño",bd_intro:"Lo que pasa una vez al año y vale la pena planear: festivales, espectáculos en vivo, diversión de Halloween y favoritos navideños. Toca uno para verlo en el calendario.",bd_swipe:"Desliza para ver Halloween y las fiestas",
 cal_title:"El calendario de otoño",cal_intro:"Todo lo que seguimos hasta diciembre, semana por semana. Filtra por edad o zona, o muestra solo lo gratis, sin inscripción o bajo techo.",
 f_age_aria:"Filtrar por edad",f_ages:"Edades",f_all:"Todas",f_baby:"Bebés",f_toddler:"Pequeños (1–3)",f_pre:"Preescolar",f_bigkids:"Niños grandes",f_area:"Zona",f_other_aria:"Otros filtros",f_only:"Mostrar solo",f_free:"Gratis",f_drop:"Sin inscripción",f_indoor:"Día de lluvia (bajo techo)",f_special:"Días especiales",prev_week:"Semana anterior",next_week:"Semana siguiente",
 cal_fine:'Los cierres por días festivos no aparecen aquí. Los eventos marcados «Verifica antes» son horarios recurrentes que no hemos podido confirmar para cada fecha, así que revisa la página del organizador antes de ir. Abre cualquier evento para ver su fuente. ¿Falta algo? <a href="mailto:newhavenmoms@gmail.com?subject=Event%20for%20the%20calendar">Cuéntanos</a>.',
@@ -1210,7 +1212,7 @@ en:{today:"Today, ",tomorrow:"Tomorrow, ",thing:"thing",things:"things",events:"
  ages:"Ages",cost:"Cost",where:"Where",directions:"Directions",sharef:"Share with a friend",org:"Organizer's page",addcal:"Add to calendar",
  emptyDay:'Nothing on the calendar this day. Try a park or museum from <a href="#things">things to do</a>.',emptyWk:"Nothing matches those filters this week. Try another age group or neighborhood, or turn off a filter.",
  shareDay:"Share this day",shareWk:"Share this weekend",thisWk:"This weekend",
- g_fall:"Fall festivals",g_hw:"Halloween",g_hol:"Holidays",seecal:"See it on the calendar",share:"Share",checkdates:"Check for dates",tba:"TBA",
+ g_fall:"Fall festivals",g_shows:"Shows & performances",g_hw:"Halloween",g_hol:"Holidays",seecal:"See it on the calendar",share:"Share",checkdates:"Check for dates",tba:"TBA",
  t_copied:"Link copied. Paste it anywhere to share.",t_nocopy:"Couldn't copy. Press and hold the text to copy it.",t_past:"That day has passed. Here's what's coming up instead.",t_day:"A friend shared this day with you on New Haven Moms.",t_wk:"A friend shared this weekend's plans with you on New Haven Moms.",t_ev:n=>`A friend shared ${n} with you on New Haven Moms.`,
  sh_ev:(t,p,d,tm)=>`${t} at ${p}, ${d}${tm?" at "+tm:""}. Want to go? Found it on New Haven Moms:`,sh_day:(n,d)=>`${n} things to do with little ones in New Haven on ${d}. Take a look on New Haven Moms:`,sh_wk:n=>`${n} things to do with little ones in New Haven this weekend. Take a look on New Haven Moms:`,
  via:"via New Haven Moms",wkTitle:(a,b)=>`This weekend, ${a} – ${b}`,langBtn:"Español",hoodLbl:"Area"},
@@ -1219,7 +1221,7 @@ es:{today:"Hoy, ",tomorrow:"Mañana, ",thing:"cosa",things:"cosas",events:"event
  ages:"Edades",cost:"Costo",where:"Dónde",directions:"Cómo llegar",sharef:"Compartir",org:"Página del organizador",addcal:"Agregar al calendario",
  emptyDay:'No hay nada en el calendario este día. Prueba un parque o museo de <a href="#things">qué hacer</a>.',emptyWk:"Nada coincide con esos filtros esta semana. Prueba otra edad o zona, o quita un filtro.",
  shareDay:"Compartir este día",shareWk:"Compartir el fin de semana",thisWk:"Este fin de semana",
- g_fall:"Festivales de otoño",g_hw:"Halloween",g_hol:"Fiestas de fin de año",seecal:"Ver en el calendario",share:"Compartir",checkdates:"Ver fechas",tba:"Pronto",
+ g_fall:"Festivales de otoño",g_shows:"Espectáculos y funciones",g_hw:"Halloween",g_hol:"Fiestas de fin de año",seecal:"Ver en el calendario",share:"Compartir",checkdates:"Ver fechas",tba:"Pronto",
  t_copied:"Enlace copiado. Pégalo donde quieras para compartir.",t_nocopy:"No se pudo copiar. Mantén presionado el texto para copiarlo.",t_past:"Ese día ya pasó. Esto es lo que viene.",t_day:"Alguien compartió este día contigo en New Haven Moms.",t_wk:"Alguien compartió los planes del fin de semana contigo en New Haven Moms.",t_ev:n=>`Alguien compartió ${n} contigo en New Haven Moms.`,
  sh_ev:(t,p,d,tm)=>`${t} en ${p}, ${d}${tm?" a las "+tm:""}. ¿Vamos? Lo encontré en New Haven Moms:`,sh_day:(n,d)=>`${n} cosas para hacer con los pequeños en New Haven el ${d}. Míralo en New Haven Moms:`,sh_wk:n=>`${n} planes con los pequeños en New Haven este fin de semana. Míralo en New Haven Moms:`,
  via:"vía New Haven Moms",wkTitle:(a,b)=>`Este fin de semana, ${a} – ${b}`,langBtn:"English",hoodLbl:"Zona"}
@@ -1475,7 +1477,7 @@ hoodSel.onchange=()=>{f.hood=hoodSel.value;hoodSel.classList.toggle("on",f.hood!
 /* ---------- big days ---------- */
 const bigEl=document.getElementById("bigList");
 function renderBig(){
-  const groups={fall:["g_fall",""],hw:["g_hw","hw"],hol:["g_hol","hol"]};
+  const groups={fall:["g_fall",""],shows:["g_shows","shows"],hw:["g_hw","hw"],hol:["g_hol","hol"]};
   const byTitle=new Map();
   E.filter(e=>e.special).forEach(e=>{
     const from=e.when[0].from,last=e.when[e.when.length-1],to=last.to||last.from,cur=byTitle.get(e.t);
