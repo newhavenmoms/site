@@ -19,6 +19,29 @@
 <meta property="og:image" content="https://newhavenctmoms.com/share-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<link rel="canonical" href="https://newhavenctmoms.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://newhavenctmoms.com/#org",
+      "name": "New Haven Moms",
+      "url": "https://newhavenctmoms.com/",
+      "description": "A free guide to events, places and resources for families in New Haven, Connecticut."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://newhavenctmoms.com/#website",
+      "url": "https://newhavenctmoms.com/",
+      "name": "New Haven Moms",
+      "publisher": { "@id": "https://newhavenctmoms.com/#org" },
+      "about": { "@type": "Place", "name": "New Haven, Connecticut" }
+    }
+  ]
+}
+</script>
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1067,6 +1090,10 @@ const V = {
   peabody:["Yale Peabody Museum","170 Whitney Ave"],
   ycba:["Yale Center for British Art","1080 Chapel St"],
   nhm:["New Haven Museum","114 Whitney Ave"],
+  woostermarket:["CitySeed Wooster Square Farmers Market","511 Chapel St"],
+  edgewoodmarket:["CitySeed Edgewood Park Farmers Market","W Rock Ave & Whalley Ave"],
+  qhouse:["Dixwell Community House (Q House)","197 Dixwell Ave"],
+  edgertonpark:["Edgerton Park","75 Cliff St"],
   green:["New Haven Green","250 Temple St"],
   junta:["Junta for Progressive Action","169 Grand Ave"],
   shubert:["Shubert Theatre","247 College St"],
@@ -1081,6 +1108,8 @@ const LIB={ages:"Birth–5 with a caregiver",a:["baby","toddler","preschool"],pr
 const U="2026-12-31";
 // s: [dow(0=Sun), [[start,end],...], from, until, nth?]
 const E=[
+ {t:"CitySeed Wooster Square Farmers Market",v:"woostermarket",ages:"All ages",a:["baby","toddler","preschool","big"],price:"Free to browse",free:true,drop:true,blurb:"An open-air, producer-only farmers market in the Wooster Square/Little Italy neighborhood, with live music and cooking demonstrations most Saturdays.",src:"https://www.cityseed.org",s:[[6,[["09:00","13:00"]],"2026-09-26","2026-11-21"]]},
+ {t:"CitySeed Edgewood Park Farmers Market",v:"edgewoodmarket",ages:"All ages",a:["baby","toddler","preschool","big"],price:"Free to browse",free:true,drop:true,blurb:"A neighborhood farmers market in Edgewood Park, at the corner of West Rock and Whalley Avenues.",src:"https://www.cityseed.org",s:[[0,[["10:00","13:00"]],"2026-09-27","2026-11-23"]]},
  {t:"Stay & Play",v:"stetson",...LIB,s:[[1,[["10:00","11:30"]],"2026-09-28",U],[6,[["10:00","11:30"]],"2026-09-26",U]]},
  {t:"Quédate y Juega · Bilingual Stay & Play",v:"fairhaven",...LIB,s:[[2,[["10:30","11:00"]],"2026-09-29",U]]},
  {t:"Stay & Play",v:"mitchell",...LIB,s:[[2,[["11:00","12:00"]],"2026-09-29",U],[6,[["11:00","12:00"]],"2026-10-17",U,3]]},
@@ -1115,7 +1144,9 @@ E.push(
  {t:"How the Grinch Stole Christmas! The Musical",v:"shubert",special:"hol",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/dr-seuss-how-the-grinch-stole-christmas-the-musical",when:[{from:"2026-11-18",to:"2026-11-22",t:[]}]},
  {t:"The Nutcracker (New Haven Ballet)",v:"shubert",special:"hol",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/new-haven-ballet-presents-the-nutcracker",when:[{from:"2026-12-11",to:"2026-12-13",t:[]}]},
  {t:"The Hip Hop Nutcracker",v:"shubert",special:"hol",ages:"Families",a:["preschool","big"],price:"Tickets required",ticket:true,src:"https://www.shubert.com/events/detail/the-hip-hop-nutcracker",when:[{from:"2026-12-22",t:[["19:00",null]]}]},
- {t:"Spring Glen Neighborhood Kid + Adult Clothing Swap",v:"springglen",special:"fall",ages:"All ages",a:ALL,price:"Free",free:true,drop:true,blurb:"The neighborhood's 6th bi-annual clothing swap. Bring gently used kids' and adult clothing to trade — no shoes, toys or accessories, please — and bring a tote bag to shop with. Leftover clothing goes to local charities. Hosted by Katie and Nette.",note:"Moved due to rain: now at Spring Glen Church, 1825 Whitney Ave, Hamden.",when:[{from:"2026-09-26",t:[["10:00","12:00"]]}]}
+ {t:"Spring Glen Neighborhood Kid + Adult Clothing Swap",v:"springglen",special:"fall",ages:"All ages",a:ALL,price:"Free",free:true,drop:true,blurb:"The neighborhood's 6th bi-annual clothing swap. Bring gently used kids' and adult clothing to trade — no shoes, toys or accessories, please — and bring a tote bag to shop with. Leftover clothing goes to local charities. Hosted by Katie and Nette.",note:"Moved due to rain: now at Spring Glen Church, 1825 Whitney Ave, Hamden.",when:[{from:"2026-09-26",t:[["10:00","12:00"]]}]},
+ {t:"CT Folk Fest & Green Expo",v:"edgertonpark",special:"fall",ages:"All ages",a:ALL,price:"Free (suggested donation)",free:true,drop:true,blurb:"A full day of live music, food trucks and eco-friendly vendors, with a dedicated Green Kids Village — yoga, a puppet-making workshop and an afternoon puppet parade made from recycled materials.",src:"https://www.ctfolk.org/",when:[{from:"2026-09-26",t:[["10:45",null]]}]},
+ {t:"New Haven Community Baby Shower",v:"qhouse",special:"fall",ages:"Pregnant parents & families with babies",a:["baby"],price:"Free",free:true,drop:true,blurb:"The 5th annual community baby shower, with free baby supplies, resources for new and expecting parents, and a celebration for the whole family.",when:[{from:"2026-10-17",t:[["11:00",null]]}]}
 );
 const TBA=[
  {g:"hw",t:"Pumpkin Patch Trolley",w:"Shore Line Trolley Museum, East Haven",p:"A non-spooky trolley ride to pick a little pumpkin, usually on October weekends. 2026 dates aren't posted yet.",src:"https://shorelinetrolley.org/"},
@@ -1124,7 +1155,7 @@ const TBA=[
 ];
 
 /* ---------- venue areas & indoor flags ---------- */
-const VM={stetson:["dixwell",1],fairhaven:["fairhaven",1],mitchell:["westville",1],ives:["downtown",1],wilson:["hill",1],stjohns:["eastrock",1],ccm:["downtown",1],cg:["westville",0],atwater:["fairhaven",1],pebbles:["eastrock",1],trinity:["downtown",1],cpc:["downtown",1],caw:["downtown",1],peabody:["downtown",1],ycba:["downtown",1],nhm:["downtown",1],green:["downtown",0],junta:["fairhaven",null],shubert:["downtown",1],broadway:["downtown",0],hope:["nearby",null],trolley:["nearby",null],ewm:["nearby",1],springglen:["nearby",1]};
+const VM={stetson:["dixwell",1],fairhaven:["fairhaven",1],mitchell:["westville",1],ives:["downtown",1],wilson:["hill",1],stjohns:["eastrock",1],ccm:["downtown",1],cg:["westville",0],atwater:["fairhaven",1],pebbles:["eastrock",1],trinity:["downtown",1],cpc:["downtown",1],caw:["downtown",1],peabody:["downtown",1],ycba:["downtown",1],nhm:["downtown",1],green:["downtown",0],junta:["fairhaven",null],shubert:["downtown",1],broadway:["downtown",0],hope:["nearby",null],trolley:["nearby",null],ewm:["nearby",1],springglen:["nearby",1],woostermarket:["downtown",0],edgewoodmarket:["westville",0],qhouse:["dixwell",1],edgertonpark:["eastrock",0]};
 const HOODS=[["all","All neighborhoods","Todas las zonas"],["downtown","Downtown & Yale","Centro y Yale"],["eastrock","East Rock","East Rock"],["westville","Westville & West Rock","Westville y West Rock"],["fairhaven","Fair Haven","Fair Haven"],["hill","The Hill","The Hill"],["dixwell","Dixwell & Newhallville","Dixwell y Newhallville"],["nearby","Other & nearby","Otras y cercanas"]];
 
 /* ---------- language ---------- */
@@ -1195,6 +1226,12 @@ es:{today:"Hoy, ",tomorrow:"Mañana, ",thing:"cosa",things:"cosas",events:"event
 };
 const tx=k=>TX[LANG][k];
 const DATA_ES={
+"An open-air, producer-only farmers market in the Wooster Square/Little Italy neighborhood, with live music and cooking demonstrations most Saturdays.":"Un mercado agrícola al aire libre, solo de productores, en el vecindario de Wooster Square/Little Italy, con música en vivo y demostraciones de cocina la mayoría de los sábados.",
+"A neighborhood farmers market in Edgewood Park, at the corner of West Rock and Whalley Avenues.":"Un mercado agrícola de vecindario en Edgewood Park, en la esquina de West Rock y Whalley Avenue.",
+"A full day of live music, food trucks and eco-friendly vendors, with a dedicated Green Kids Village — yoga, a puppet-making workshop and an afternoon puppet parade made from recycled materials.":"Un día completo de música en vivo, food trucks y vendedores ecológicos, con un Green Kids Village dedicado — yoga, un taller para hacer títeres y un desfile de títeres hechos con materiales reciclados por la tarde.",
+"The 5th annual community baby shower, with free baby supplies, resources for new and expecting parents, and a celebration for the whole family.":"El 5.º baby shower comunitario anual, con artículos gratuitos para bebés, recursos para padres nuevos y futuros, y una celebración para toda la familia.",
+"Pregnant parents & families with babies":"Padres embarazadas y familias con bebés",
+"Free to browse":"Gratis para visitar",
 "The neighborhood's 6th bi-annual clothing swap. Bring gently used kids' and adult clothing to trade — no shoes, toys or accessories, please — and bring a tote bag to shop with. Leftover clothing goes to local charities. Hosted by Katie and Nette.":"El sexto intercambio de ropa semestral del vecindario. Trae ropa de niños y de adultos en buen estado para intercambiar — nada de zapatos, juguetes ni accesorios, por favor — y trae una bolsa de tela para llevarte lo que elijas. La ropa sobrante se dona a organizaciones locales. Organizado por Katie y Nette.",
 "Moved due to rain: now at Spring Glen Church, 1825 Whitney Ave, Hamden.":"Cambio de lugar por la lluvia: ahora será en Spring Glen Church, 1825 Whitney Ave, Hamden.",
 "Birth–5 with a caregiver":"Desde el nacimiento hasta 5 años, con un adulto","Free":"Gratis","Newborn–6 with a caregiver":"Recién nacidos a 6 años, con un adulto","Free, donations welcome":"Gratis, se aceptan donaciones","The fall schedule still needs confirming with St. John's.":"El horario de otoño aún debe confirmarse con St. John's.",
@@ -1599,6 +1636,56 @@ function applyLang(){
   const lb=document.getElementById("langBtn");lb.querySelector(".full").textContent=tx("langBtn");lb.querySelector(".short").textContent=es?"EN":"ES";lb.lang=es?"en":"es";lb.setAttribute("aria-label",es?"Switch to English":"Cambiar a español");
   document.querySelectorAll(".tabbar [data-tab] span").forEach(s=>{const m={classes:["Classes","Clases"],today:["Today","Hoy"],bigdays:["Big days","Especiales"],events:["Calendar","Calendario"],things:["To do","Qué hacer"],resources:["Help","Ayuda"]}[s.parentElement.dataset.tab];s.textContent=es?m[1]:m[0]});
   renderHoods();renderDays();renderDay();renderWeek();renderBig();renderClasses();renderTicker();
+  (function injectEventSchema(){
+    const items=[];
+    E.filter(e=>!e.special).forEach(e=>{
+      for(let i=0;i<45;i++){
+        const d=addDays(today,i);
+        const o=eventsOn(d).find(x=>x.e.t===e.t&&x.e.v===e.v);
+        if(o){
+          const t=o.times[0];
+          items.push({
+            "@type":"Event",
+            "name":e.t,
+            "startDate":key(d)+(t?"T"+t[0]:""),
+            "endDate":(t&&t[1])?key(d)+"T"+t[1]:undefined,
+            "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus":"https://schema.org/EventScheduled",
+            "location":V[e.v]?{"@type":"Place","name":V[e.v][0],"address":addrLine(e.v)}:undefined,
+            "description":e.blurb||e.t,
+            "isAccessibleForFree":!!e.free,
+            "url":SITE+"#e="+encodeURIComponent(e.id)+"&d="+key(d)
+          });
+          break;
+        }
+      }
+    });
+    E.filter(e=>e.special).forEach(e=>{
+      (e.when||[]).forEach(w=>{
+        if(w.from>=key(today)){
+          const t=w.t&&w.t[0];
+          items.push({
+            "@type":"Event",
+            "name":e.t,
+            "startDate":w.from+(t?"T"+t[0]:""),
+            "endDate":(w.to&&w.to!==w.from)?w.to:((t&&t[1])?w.from+"T"+t[1]:undefined),
+            "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus":"https://schema.org/EventScheduled",
+            "location":V[e.v]?{"@type":"Place","name":V[e.v][0],"address":addrLine(e.v)}:undefined,
+            "description":e.blurb||e.t,
+            "isAccessibleForFree":!!e.free,
+            "url":SITE+"#e="+encodeURIComponent(e.id)+"&d="+w.from
+          });
+        }
+      });
+    });
+    if(!items.length)return;
+    const ld={"@context":"https://schema.org","@graph":items};
+    const s=document.createElement('script');
+    s.type='application/ld+json';
+    s.textContent=JSON.stringify(ld);
+    document.head.appendChild(s);
+  })();
 }
 (function(){const mq=window.matchMedia("(max-width:760px)");let last=mq.matches;
   const re=()=>{if(mq.matches!==last){last=mq.matches;renderWeek();renderClasses()}};
